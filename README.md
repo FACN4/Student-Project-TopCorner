@@ -51,7 +51,7 @@ Key similarities:
 * Being left out and bored
 #### Technology- apps and social networks they might use
 * Facebook, Instagram
-* Smart phones.. laptops.. tablets
+* Smart phone.. laptop
 * Fantasy football and other football games
 
 
