@@ -26,6 +26,7 @@ Key similarities:
 
 # User Profile
 ### Chris
+[](https://i.imgur.com/KI934Da.png)
 #### Who are they? Where are they from?
 * UK
 * Sociable
