@@ -20,5 +20,42 @@ Key similarities:
 * Analysis of predictions and results
 ![](https://i.imgur.com/dDPsJYb.png)
 
-USP of TopCorner
-* Emphasis on
+
+
+
+
+# User Profile
+### Chris
+Who are they? Where are they from?
+* UK
+* Sociable
+* Vaguely follows football, but enjoys the world cup. Does not follow football independently.
+* Moderately tech savy
+What are their goals and motivations?
+* Stay involved with/follow the World Cup
+* Have fun and socialise
+* Win some money maybe... but not a high priority
+What are their frustrations? How are they feeling?
+* They might think it is similar to gambling... illegal in many countries... and has undesireable associations
+What are their aspirations?
+* For their team to win the World Cup. 
+* Make correct predictions
+* Win a prize
+Things they like
+* Friendly and fun environment 
+* Simplicity and things that are easy to use
+* Keeping up to date
+* Responsive and quick websites. Familiar designs and features.
+
+Things they dont like
+* Being left out and bored
+Technology- apps and social networks they might use
+* Facebook, Instagram
+* Smart phones.. laptops.. tablets
+* Fantasy football and other football games
+
+
+
+
+
+
