@@ -28,6 +28,7 @@ Key similarities:
 ### Chris
 ![](https://i.imgur.com/KI934Da.png)
 #### Who are they? Where are they from?
+* Requires at least small amounts of spare money
 * UK
 * Sociable
 * Vaguely follows football, but enjoys the world cup. Does not follow football independently.
