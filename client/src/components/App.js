@@ -1,9 +1,16 @@
 import React, { Component } from "react";
+import Customers from "./customers";
 
 class App extends Component {
   render() {
-    return <div>Hello World</div>;
+    return(
+    <div>
+    <h1>Hello World</h1>
+    <Customers/>
+    </div>
+);
   }
 }
+
 
 export default App;
