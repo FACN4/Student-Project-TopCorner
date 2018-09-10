@@ -2,9 +2,13 @@
   "name": "student-project-topcorner",
   "version": "1.0.0",
   "description": "An online world cup sweepstake",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client-install": "cd client && npm install",
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -17,6 +21,7 @@
   },
   "homepage": "https://github.com/FACN4/Student-Project-TopCorner#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "cookie-session": "^2.0.0-beta.3",
     "env2": "^2.2.2",
@@ -25,8 +30,6 @@
     "express-session": "^1.15.6",
     "pg": "^7.4.3",
     "pg-promise": "^8.4.6",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0",
     "request": "^2.88.0"
   },
   "devDependencies": {
