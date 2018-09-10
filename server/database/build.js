@@ -5,6 +5,15 @@ const teams = require("./teams.json");
 const matches = require("./matches.json");
 const dbConnection = require("./dbconnection");
 
+let counter = 0;
+
+const addOne = () => {
+  counter++;
+  if (counter == users.length + teams.length + matches.length) {
+    console.log(`Database build complete. All ${counter} rows complete`);
+  }
+};
+
 const makeEmptyTables = fs.readFileSync(
   path.join(__dirname, "build.sql"),
   "utf-8"
@@ -41,6 +50,7 @@ const buildDatabase = () => {
             }
           }
         );
+        addOne();
       });
       teams.forEach(team => {
         const queryInsertTeams =
@@ -54,6 +64,7 @@ const buildDatabase = () => {
             }
           }
         );
+        addOne();
       });
       matches.forEach(match => {
         const queryInsertMatches =
@@ -73,10 +84,10 @@ const buildDatabase = () => {
             }
           }
         );
+        addOne();
       });
     }
   });
-  console.log("Build success");
 };
 
 buildDatabase();
