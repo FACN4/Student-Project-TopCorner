@@ -1,0 +1,11 @@
+li{
+  list-style: none;
+  display:flex;
+  justify-content: center;
+  color : skyblue;
+}
+ h1{
+   display:flex;
+   justify-content: center;
+   color : orange;
+ }
