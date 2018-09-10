@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "username": "bennyboy",
+    "email": "ben.john.newman@gmail.com",
+    "password": "password123",
+    "bio": "I'm Ben.. I love football",
+    "YOB": "1990",
+    "photo": "bennyboy.jpeg",
+    "groups": "[1]",
+    "created": "1000-01-01 00:00:00",
+    "last_login": "1000-01-01 00:00:00",
+    "predictions": "{[0,0], [0,0], [0,0], [0,0], [0,0]}",
+    "points": "19",
+    "paid": "true"
+  },
+  {
+    "id": 2,
+    "username": "solGirl",
+    "email": "sol@gmail.com",
+    "password": "password123",
+    "bio": "I'm Sol.. I hate football",
+    "YOB": "1991",
+    "photo": "solGirl.jpeg",
+    "groups": "[1,2]",
+    "created": "1000-01-01 00:00:00",
+    "last_login": "1000-01-01 00:00:00",
+    "predictions": "{[1,0], [1,0], [1,0], [1,0], [1,0]}",
+    "points": "20",
+    "paid": "false"
+  }
+]
