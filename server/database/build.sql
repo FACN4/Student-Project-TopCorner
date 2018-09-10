@@ -45,7 +45,7 @@ CREATE TABLE matches (
   kickoff TIMESTAMP,
   final_score VARCHAR (255)
 );
---
+
 DROP TABLE IF EXISTS changes CASCADE;
 
 CREATE TABLE changes (

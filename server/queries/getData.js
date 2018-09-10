@@ -1,14 +1,14 @@
-const dbConnection = require("../database/dbconnection.js");
+const dbConnection = require('../database/dbconnection.js');
 
-const getUserData = () => {
-  dbConnection.query(`SELECT * FROM users ORDER BY id ASC`, (err, res) => {
+const getData = (cb) => {
+  const query = 'SELECT * FROM teams ORDER BY id ASC';
+  dbConnection.query(query, (err, res) => {
     if (err) {
-      console.log(err);
+      cb(err);
     } else {
-      console.log(res.rows);
-      return res.rows;
+      cb(null, res.rows);
     }
   });
 };
 
-module.export = getUserData;
+module.exports = getData;
