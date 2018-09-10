@@ -76,6 +76,7 @@ const buildDatabase = () => {
       });
     }
   });
+  console.log("Build success");
 };
 
 buildDatabase();
