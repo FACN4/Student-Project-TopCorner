@@ -1,27 +1,25 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Row from "./Row";
 
 const StyledPredictionsDiv = styled.div`
   position: fixed;
   top: 75px;
 `;
 class Predictions extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
   render() {
     const { users } = this.props;
-
-    const user1 = users[0];
-    console.log(user1);
-
-    return (
-      <StyledPredictionsDiv>
-        <p> Helllo </p>
-      </StyledPredictionsDiv>
-    );
+    if (users.length === 0) {
+      return <h1> Loading..!</h1>;
+    } else {
+      return (
+        <StyledPredictionsDiv>
+          {users.map((user, i) => {
+            return <Row key={i} user={user} />;
+          })}
+        </StyledPredictionsDiv>
+      );
+    }
   }
 }
 

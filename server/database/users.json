@@ -28,5 +28,35 @@
     "predictions": "{[1,0], [1,0], [1,0], [1,0], [1,0]}",
     "points": "20",
     "paid": "false"
+  },
+  {
+    "id": 3,
+    "username": "mrrfvfd",
+    "email": "ben@gmail.com",
+    "password": "password123",
+    "bio": "I'm Sol.. I hate football",
+    "YOB": "1991",
+    "photo": "mrrfvfd.jpeg",
+    "groups": "[1,2]",
+    "created": "1000-01-01 00:00:00",
+    "last_login": "1000-01-01 00:00:00",
+    "predictions": "{[1,0], [1,0], [1,0], [1,0], [1,0]}",
+    "points": "25",
+    "paid": "false"
+  },
+  {
+    "id": 4,
+    "username": "Heyboy",
+    "email": "sol@live.com",
+    "password": "password123",
+    "bio": "I'm Sol.. I hate football",
+    "YOB": "1991",
+    "photo": "Heyboy.jpeg",
+    "groups": "[1,2]",
+    "created": "1000-01-01 00:00:00",
+    "last_login": "1000-01-01 00:00:00",
+    "predictions": "{[1,0], [1,0], [1,0], [1,0], [1,0]}",
+    "points": "21",
+    "paid": "false"
   }
 ]

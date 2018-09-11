@@ -15,13 +15,6 @@ const StyledFooterP = styled.div`
 `;
 
 class Footer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      customers: []
-    };
-  }
-
   render() {
     return (
       <StyledFooterDiv>

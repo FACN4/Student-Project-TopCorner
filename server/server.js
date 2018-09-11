@@ -1,11 +1,27 @@
 const express = require('express');
+const session = require('express-session');
 const teams = require('./database/teams');
-const users = require('./database/users');
 const matches = require('./database/matches');
+const { getDataUsers } = require('./queries/getData');
 
 const app = express();
+
+const { SECRET } = process.env;
+app.use(
+  session({
+    resave: true,
+    saveUninitialized: true,
+    secret: SECRET,
+    key: 'user_authentication',
+  }),
+);
 app.get('/api/users', (req, res) => {
-  res.json(users);
+  getDataUsers()
+    .then(users => res.json(users))
+    .catch((err) => {
+      console.log(err);
+      new Error(err);
+    });
 });
 app.get('/api/teams', (req, res) => {
   res.json(teams);

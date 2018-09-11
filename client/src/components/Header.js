@@ -16,13 +16,6 @@ const StyledHeaderImg = styled.img`
 `;
 
 class Header extends Component {
-  constructor() {
-    super();
-    this.state = {
-      customers: []
-    };
-  }
-
   render() {
     return (
       <StyledHeaderDiv>
@@ -31,37 +24,5 @@ class Header extends Component {
     );
   }
 }
-
-// class Customers extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       customers: []
-//     };
-//   }
-//
-//   render() {
-//     return (
-//       <div>
-//         <Header>Customers</Header>
-//         <ul>
-//           {this.state.customers.map(customer => (
-//             <Customer key={customer.id}>
-//               {customer.firstName}
-//               {customer.lastName}{" "}
-//             </Customer>
-//           ))}
-//         </ul>
-//       </div>
-//     );
-//   }
-//   componentDidMount() {
-//     fetch('/api/customers')
-//     .then(res => res.json())
-//     .then(customers => this.setState({customers}, () => console.log('Customers fetched..',customers)))
-//     .catch(err => console.log(err))
-//   }
-// }
-// }
 
 export default Header;
