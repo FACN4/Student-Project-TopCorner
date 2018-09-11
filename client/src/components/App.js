@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import Customers from "./customers";
+import styled from 'styled-components';
+
+const Header = styled.h1`
+  display :flex;
+  justify-content : center;
+  color : green;
+`
 
 class App extends Component {
   render() {
     return(
     <div>
-    <h1>Hello World</h1>
+    <Header>Hello World</Header>
     <Customers/>
     </div>
 );
