@@ -26,7 +26,6 @@ const insertUserPromises = () => {
       user.paid,
     ])),
   );
-  console.log(users);
 };
 
 const insertTeamPromises = () => {
