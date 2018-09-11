@@ -1,6 +1,7 @@
 const tape = require('tape');
-const runDbBuild = require('../server/database/build.js');
+const { buildDatabase, makeEmptyTables } = require('../server/database/build.js');
 const getData = require('../server/queries/getData.js');
+const { db } = require('../server/database/dbconnection');
 
 tape('--------------database_tests.js----------check tape is working', (t) => {
   t.ok(true, 'tape is working');
@@ -9,19 +10,34 @@ tape('--------------database_tests.js----------check tape is working', (t) => {
 });
 
 tape('testing runDbBuild', (t) => {
-  runDbBuild((err) => {
-    t.error(err, 'runDB should return a null error');
-    t.end();
-  });
+  buildDatabase()
+    .then(() => {
+      t.pass('Database build successful ');
+      t.end();
+    })
+    .catch((err) => {
+      t.error(err, 'database build failed');
+      t.end();
+    });
 });
 
 tape('testing teams table', (t) => {
-  runDbBuild((err) => {
-    getData((err, teams) => {
-      t.error(err, 'getData should return a null error');
-      console.log(teams.length);
-      t.ok(teams.length === 32, true, 'The teams table should have a length 32');
-      t.end();
-    });
+  buildDatabase().then(() => {
+    getData()
+      .then((res) => {
+        if (res.length === 32) {
+          t.pass('teams table build successfully');
+        }
+        t.end();
+      })
+      .catch((err) => {
+        t.error(err, 'teams tables should have 32 rows');
+        t.end();
+      });
   });
+});
+
+db.none(makeEmptyTables).catch((err) => {
+  console.log(err);
+  new Error(err);
 });

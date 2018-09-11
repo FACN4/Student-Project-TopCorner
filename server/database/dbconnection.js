@@ -1,20 +1,16 @@
-const { Pool } = require('pg');
+const pgp = require('pg-promise')();
 require('env2')('./config.env');
 
-let { DEV_DB_URL } = process.env;
+let { DB_URL } = process.env;
 const { NODE_ENV } = process.env;
 const { TEST_DB_URL } = process.env;
 
 if (NODE_ENV === 'test') {
-  DEV_DB_URL = TEST_DB_URL;
+  DB_URL = TEST_DB_URL;
 }
 
-if (!DEV_DB_URL) throw new Error('Enviroment variable DEV_DB_URL must be set');
+if (!DB_URL) throw new Error('Enviroment variable DEV_DB_URL must be set');
 
-const options = {
-  connectionString: DEV_DB_URL,
-};
+const db = pgp(DB_URL);
 
-options.ssl = options.host !== 'localhost';
-
-module.exports = new Pool(options);
+module.exports = { db };
