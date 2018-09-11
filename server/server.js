@@ -1,14 +1,17 @@
 const express = require('express');
+const teams = require('./database/teams');
+const users = require('./database/users');
+const matches = require('./database/matches');
 
 const app = express();
-app.get('/api/customers', (req, res) => {
-  const customers = [
-    { id: 1, firstName: 'Sol' },
-    { id: 2, firstName: 'Bubs' },
-    { id: 3, firstName: 'T' },
-    { id: 4, firstName: 'Ben' },
-  ];
-  res.json(customers);
+app.get('/api/users', (req, res) => {
+  res.json(users);
+});
+app.get('/api/teams', (req, res) => {
+  res.json(teams);
+});
+app.get('/api/matches', (req, res) => {
+  res.json(matches);
 });
 
 const port = 4040;
