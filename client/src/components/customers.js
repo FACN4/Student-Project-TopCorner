@@ -1,5 +1,18 @@
 import React, { Component } from "react";
-import "./customers.css";
+import styled from 'styled-components';
+
+const Customer = styled.li`
+  list-style: none;
+  display:flex;
+  justify-content: center;
+  color: skyblue;
+`
+
+const Header = styled.h1`
+  display :flex;
+  justify-content : center;
+  color : orange;
+`
 
 class Customers extends Component {
   constructor(){
@@ -8,14 +21,16 @@ class Customers extends Component {
       customers:[]
     }
   }
+
+
   render() {
     return (
       <div>
-      <h1>Customers</h1>
-<ul>
-  {this.state.customers.map(customer =>
-  <li key={customer.id}>{customer.firstName}{customer.lastName} </li>)}
-</ul>
+        <Header>Customers</Header>
+        <ul>
+            {this.state.customers.map(customer =>
+            <Customer key={customer.id}>{customer.firstName}{customer.lastName} </Customer>)}
+        </ul>
       </div>
     )
   }
