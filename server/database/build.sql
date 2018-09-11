@@ -1,7 +1,7 @@
 BEGIN;
 
 DROP TABLE IF EXISTS users CASCADE;
---
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY UNIQUE,
   username VARCHAR(255) UNIQUE,
@@ -45,7 +45,7 @@ CREATE TABLE matches (
   kickoff TIMESTAMP,
   final_score VARCHAR (255)
 );
---
+
 DROP TABLE IF EXISTS changes CASCADE;
 
 CREATE TABLE changes (

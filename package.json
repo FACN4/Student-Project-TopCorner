@@ -4,6 +4,7 @@
   "description": "An online world cup sweepstake",
   "main": "server/server.js",
   "scripts": {
+    "test": "NODE_ENV=test nyc tape testing/* | tap-spec",
     "client-install": "cd client && npm install",
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
@@ -24,11 +25,9 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
-    "eslint": "^5.5.0",
-    "cookie-session": "^2.0.0-beta.3",
-    "eslint": "^5.5.0",
     "cookie-session": "^2.0.0-beta.3",
     "env2": "^2.2.2",
+    "eslint": "^5.5.0",
     "express": "^4.16.3",
     "express-middleware": "^3.1.0",
     "express-session": "^1.15.6",
@@ -50,7 +49,6 @@
     "jest": "^23.5.0",
     "nodemon": "^1.18.4",
     "nyc": "^13.0.1",
-    "pg": "^7.4.3",
     "react-testing-library": "^5.0.1",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
