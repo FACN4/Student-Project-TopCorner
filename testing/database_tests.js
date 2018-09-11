@@ -26,7 +26,7 @@ tape('testing teams table', (t) => {
     getData()
       .then((res) => {
         if (res.length === 32) {
-          t.pass('teams table build successfully');
+          t.pass('teams table built successfully');
         }
         t.end();
       })
