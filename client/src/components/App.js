@@ -35,11 +35,11 @@ class App extends Component {
     if (this.state.users.length === 0) {
       return <h1> Loading..!</h1>;
     } else {
-      console.log(this.state.users[0].predictions);
+      console.log(JSON.parse(this.state.users[0].predictions));
       return (
         <div>
           <Header />
-          <Predictions users={this.state.users} />
+          <Predictions users={this.state.users} matches={this.state.users} />
           <Footer />
         </div>
       );
