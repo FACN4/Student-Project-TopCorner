@@ -7,6 +7,7 @@ import {
   CellPoints
 } from "./Predictions.style";
 import edit from "../../assets/images/edit.png";
+import dropDown from "../../assets/images/dropDown.svg";
 // import Heyboy from "../../assets/profilePhotos/Heyboy.jpeg";
 // import mrrfvfd from "../../assets/profilePhotos/mrrfvfd.jpeg";
 // import solGirl from "../../assets/profilePhotos/Solgirl.jpg";
@@ -66,6 +67,7 @@ class Predictions extends Component {
       return (
         <StyledPredictionsDiv>
           <Button img={edit} text="Edit Predictions" />
+          <Button img={dropDown} text="Sort" />
           <PredictionsTable>
             <tbody>{this.createTable()}</tbody>
           </PredictionsTable>
