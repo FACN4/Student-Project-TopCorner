@@ -6,15 +6,6 @@ const { getDataUsers } = require('./queries/getData');
 
 const app = express();
 
-const { SECRET } = process.env;
-app.use(
-  session({
-    resave: true,
-    saveUninitialized: true,
-    secret: SECRET,
-    key: 'user_authentication',
-  }),
-);
 app.get('/api/users', (req, res) => {
   getDataUsers()
     .then(users => res.json(users))
