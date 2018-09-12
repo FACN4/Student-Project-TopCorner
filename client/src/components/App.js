@@ -29,13 +29,13 @@ class App extends Component {
         .then(teams => this.setState({ teams }))
         .catch(err => console.log(err))
     ]);
+    console.log(this.state.matches);
   }
 
   render() {
     if (this.state.users.length === 0) {
       return <h1> Loading..!</h1>;
     } else {
-      console.log(JSON.parse(this.state.users[0].predictions));
       return (
         <div>
           <Header />

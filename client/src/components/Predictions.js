@@ -10,23 +10,25 @@ class Predictions extends Component {
   createTable = () => {
     let table = [];
     const { users, matches } = this.props;
-
+    console.log(matches);
     // Outer loop to create parent
     for (let i = 0; i < users.length + 1; i++) {
       let children = [];
       //Inner loop to create children
-      for (let j = 0; j < matches.length + 3; j++) {
+      for (let j = 0; j < matches.length; j++) {
         if (i === 0 && j === 0) {
           children.push(<td>{``}</td>);
         } else if (i === 0) {
-          children.push(<td>{`Matches`}</td>);
+          children.push(<td class="tbl tbl-matches">{`Matches`}</td>);
         } else if (j === 0) {
-          children.push(<td>{`photo`}</td>);
+          children.push(<td>{`${users[i - 1].photo}`}</td>);
         } else if (j === 1) {
           children.push(<td>{`${users[i - 1].username}`}</td>);
         } else {
           children.push(
-            <td>{`${JSON.parse(users[i - 1].predictions)[j - 2][0]}`}</td>
+            <td>{`${JSON.parse(users[i - 1].predictions)[j - 2][0]} - ${
+              JSON.parse(users[i - 1].predictions)[j - 2][1]
+            }`}</td>
           );
         }
       }
