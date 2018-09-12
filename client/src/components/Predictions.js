@@ -38,6 +38,7 @@ class Predictions extends Component {
   };
   render() {
     const { users } = this.props;
+    console.log(users);
     if (users.length === 0) {
       return <h1> Loading..!</h1>;
     } else {

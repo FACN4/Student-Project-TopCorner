@@ -16,20 +16,16 @@ class App extends Component {
   }
   componentDidMount() {
     Promise.all([
-      fetch("/api/users")
-        .then(res => res.json())
-        .then(users => this.setState({ users }))
-        .catch(err => console.log(err)),
-      fetch("/api/matches")
-        .then(res => res.json())
-        .then(matches => this.setState({ matches }))
-        .catch(err => console.log(err)),
+      fetch("/api/users"),
+      fetch("/api/matches"),
       fetch("/api/teams")
-        .then(res => res.json())
-        .then(teams => this.setState({ teams }))
-        .catch(err => console.log(err))
-    ]);
-    console.log(this.state.matches);
+    ])
+      .then(res => Promise.all(res.map(dataset => dataset.json())))
+      .then(data => {
+        console.log(data, "DATA");
+        this.setState({ users: data[0], matches: data[1], teams: data[2] });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
