@@ -10,7 +10,7 @@
     "server": "nodemon server/server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "node server/database/build.js"
+    "build": "node server/database/build.js run"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "express-session": "^1.15.6",
     "pg": "^7.4.3",
     "pg-promise": "^8.4.6",
+    "react-router-dom": "^4.3.1",
     "request": "^2.88.0"
   },
   "devDependencies": {

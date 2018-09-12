@@ -1,14 +1,24 @@
 const express = require('express');
+const session = require('express-session');
+const teams = require('./database/teams');
+const matches = require('./database/matches');
+const { getDataUsers } = require('./queries/getData');
 
 const app = express();
-app.get('/api/customers', (req, res) => {
-  const customers = [
-    { id: 1, firstName: 'Sol' },
-    { id: 2, firstName: 'Bubs' },
-    { id: 3, firstName: 'T' },
-    { id: 4, firstName: 'Ben' },
-  ];
-  res.json(customers);
+
+app.get('/api/users', (req, res) => {
+  getDataUsers()
+    .then(users => res.json(users))
+    .catch((err) => {
+      console.log(err);
+      new Error(err);
+    });
+});
+app.get('/api/teams', (req, res) => {
+  res.json(teams);
+});
+app.get('/api/matches', (req, res) => {
+  res.json(matches);
 });
 
 const port = 4040;

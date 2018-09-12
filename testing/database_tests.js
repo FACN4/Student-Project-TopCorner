@@ -1,6 +1,6 @@
 const tape = require('tape');
 const { buildDatabase, makeEmptyTables } = require('../server/database/build.js');
-const getData = require('../server/queries/getData.js');
+const { getDataTeams } = require('../server/queries/getData.js');
 const { db } = require('../server/database/dbconnection');
 
 tape('--------------database_tests.js----------check tape is working', (t) => {
@@ -23,7 +23,7 @@ tape('testing runDbBuild', (t) => {
 
 tape('testing teams table', (t) => {
   buildDatabase().then(() => {
-    getData()
+    getDataTeams()
       .then((res) => {
         if (res.length === 32) {
           t.pass('teams table built successfully');

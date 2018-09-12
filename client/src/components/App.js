@@ -1,23 +1,46 @@
 import React, { Component } from "react";
-import Customers from "./customers";
-import styled from 'styled-components';
-
-const Header = styled.h1`
-  display :flex;
-  justify-content : center;
-  color : green;
-`
+// import styled from "styled-components";
+// import { BrowserRouter as Router, Link } from "react-router-dom";
+import Header from "./Header";
+import Predictions from "./Predictions";
+import Footer from "./Footer";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      users: [],
+      teams: [],
+      matches: []
+    };
+  }
+  componentDidMount() {
+    Promise.all([
+      fetch("/api/users"),
+      fetch("/api/matches"),
+      fetch("/api/teams")
+    ])
+      .then(res => Promise.all(res.map(dataset => dataset.json())))
+      .then(data => {
+        console.log(data, "DATA");
+        this.setState({ users: data[0], matches: data[1], teams: data[2] });
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
-    return(
-    <div>
-    <Header>Hello World</Header>
-    <Customers/>
-    </div>
-);
+    if (this.state.users.length === 0) {
+      return <h1> Loading..!</h1>;
+    } else {
+      return (
+        <div>
+          <Header />
+          <Predictions users={this.state.users} matches={this.state.users} />
+          <Footer />
+        </div>
+      );
+    }
   }
 }
-
 
 export default App;
