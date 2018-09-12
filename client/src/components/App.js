@@ -23,13 +23,12 @@ class App extends Component {
       .then(res => Promise.all(res.map(dataset => dataset.json())))
       .then(data => {
         this.setState({ users: data[0], matches: data[1], teams: data[2] });
-        console.log(this.state.matches);
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    if (this.state.teams.length !== 32) {
+    if (this.state.teams.length === 0) {
       return <h1> Loading..!</h1>;
     } else {
       return (
