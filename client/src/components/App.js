@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
-// import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link , Switch } from 'react-router-dom'
 import Header from "./Header";
 import Predictions from "./Predictions";
 import Footer from "./Footer";
@@ -33,11 +33,21 @@ class App extends Component {
       return <h1> Loading..!</h1>;
     } else {
       return (
+        <Router>
         <div>
-          <Header />
-          <Predictions users={this.state.users} matches={this.state.users} />
-          <Footer />
+          {/* <Nav> */}
+            {/* <Switch> */}
+        {/* <Route exact path="/homepage" component={Hompage} />
+        <Route path="/login" component={Login} /> */}
+        {/* <Route path ="/Predictions" component={Predictions} /> */}
+      {/* </Switch> */}
+      <Header />
+      <Link to="/Predictions">Predictions</Link>
+      <Predictions users={this.state.users} matches={this.state.users} />
+    {/* </Nav> */}
+    <Footer />
         </div>
+      </Router>
       );
     }
   }
