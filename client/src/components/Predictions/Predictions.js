@@ -1,24 +1,17 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-// import bennyboy from "../assets/profilePhotos/bennyboy.jpeg";
-
-const StyledPredictionsDiv = styled.div`
-  position: fixed;
-  top: 75px;
-`;
-const PredictionsTable = styled.table`
-  background-color: #ede9e9;
-`;
-
-const CellHeader = styled.td`
-  height: 75px;
-  max-width: 70px;
-  background-color: #b0c7f3;
-`;
-
-const CellPoints = styled.td`
-  background-color: #c3c2c2;
-`;
+import Button from "../Button/Button.js";
+import {
+  StyledPredictionsDiv,
+  PredictionsTable,
+  CellHeader,
+  CellPoints
+} from "./Predictions.style";
+import edit from "../../assets/images/edit.png";
+import dropDown from "../../assets/images/dropDown.svg";
+// import Heyboy from "../../assets/profilePhotos/Heyboy.jpeg";
+// import mrrfvfd from "../../assets/profilePhotos/mrrfvfd.jpeg";
+// import solGirl from "../../assets/profilePhotos/Solgirl.jpg";
+import bennyboy from "../../assets/profilePhotos/bennyboy.jpeg";
 
 class Predictions extends Component {
   createTable = () => {
@@ -27,6 +20,7 @@ class Predictions extends Component {
     // Outer loop to create parent
     for (let i = 0; i < users.length + 1; i++) {
       let children = [];
+
       //Inner loop to create children
       for (let j = 0; j < matches.length + 3; j++) {
         if (i === 0 && j < 2) {
@@ -45,20 +39,20 @@ class Predictions extends Component {
           children.push(
             <td>
               <img
-                src="https://scontent.ftlv5-1.fna.fbcdn.net/v/t1.0-9/20953476_10213991246360476_4887975886932580651_n.jpg?_nc_cat=0&oh=c27cc91f60f5b7d5191eb1909ab506bf&oe=5C343F4E"
+                src={bennyboy}
                 height="50px"
-                alt="profile pic"
+                alt={`${users[i - 1].username}'s profile pic`}
               />
             </td>
           );
         } else if (j === 1) {
           children.push(<td>{`${users[i - 1].username}`}</td>);
         } else {
-          children.push(
-            <td>{`${JSON.parse(users[i - 1].predictions)[j - 2][0]} - ${
-              JSON.parse(users[i - 1].predictions)[j - 2][1]
-            }`}</td>
-          );
+          let prediction = JSON.parse(users[i - 1].predictions)[j - 2];
+          if (prediction === undefined) {
+            prediction = [0, 0];
+          }
+          children.push(<td>{`${prediction[0]} - ${prediction[1]}`}</td>);
         }
       }
       table.push(<tr>{children}</tr>);
@@ -66,12 +60,14 @@ class Predictions extends Component {
     return table;
   };
   render() {
-    const { users } = this.props;
-    if (users.length === 0) {
+    const { matches } = this.props;
+    if (matches.length < 15) {
       return <h1> Loading..!</h1>;
     } else {
       return (
         <StyledPredictionsDiv>
+          <Button img={edit} text="Edit Predictions" />
+          <Button img={dropDown} text="Sort" />
           <PredictionsTable>
             <tbody>{this.createTable()}</tbody>
           </PredictionsTable>
