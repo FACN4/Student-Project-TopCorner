@@ -19,9 +19,19 @@ class App extends Component {
     this.state = {
       users: [],
       teams: [],
-      matches: []
+      matches: [],
+      loginPage: { username: 0, password: "" },
+      SignupPage: { username: "", email: "", password: "", confirm: "" }
     };
   }
+
+  // fillInputBox = event => {
+  //     this.setState(prevState => {
+  //       return {
+  //         loginPage.username: prevState.loginPage.username + 5
+  //       };
+  //     });
+  //   }
   componentDidMount() {
     Promise.all([
       fetch("/api/users"),
@@ -36,6 +46,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.username);
     if (this.state.teams.length === 0) {
       return (
         <div>
