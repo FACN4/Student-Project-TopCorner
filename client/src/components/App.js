@@ -22,14 +22,13 @@ class App extends Component {
     ])
       .then(res => Promise.all(res.map(dataset => dataset.json())))
       .then(data => {
-        console.log(data, "DATA");
         this.setState({ users: data[0], matches: data[1], teams: data[2] });
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    if (this.state.users.length === 0) {
+    if (this.state.teams.length === 0) {
       return <h1> Loading..!</h1>;
     } else {
       return (

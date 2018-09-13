@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const teams = require('./database/teams');
 const matches = require('./database/matches');
-const { getDataUsers } = require('./queries/getData');
+const { getDataUsers, getDataMatches } = require('./queries/getData');
 
 const app = express();
 
@@ -18,7 +18,12 @@ app.get('/api/teams', (req, res) => {
   res.json(teams);
 });
 app.get('/api/matches', (req, res) => {
-  res.json(matches);
+  getDataMatches()
+    .then(users => res.json(users))
+    .catch((err) => {
+      console.log(err);
+      new Error(err);
+    });
 });
 
 const port = 4040;
