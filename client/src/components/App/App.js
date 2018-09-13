@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import Header from "../Header/Header.js";
 import Predictions from "../Predictions/Predictions.js";
 import Footer from "../Footer/Footer.js";
@@ -39,14 +39,33 @@ class App extends Component {
       );
     } else {
       return (
-        <div>
-          <Header />
-          <Predictions users={this.state.users} matches={this.state.matches} />
-          <Footer />
-        </div>
+        <Router>
+          <div>
+            <Header /> {/* <Nav> */}
+            <Predictions
+              users={this.state.users}
+              matches={this.state.matches}
+            />
+            <Footer />
+          </div>
+        </Router>
       );
     }
   }
 }
+
+// {/<Switch> }
+//               {<Route exact path="/homepage" component={Hompage} />
+// <Route path="/login" component={Login} /> */}
+//               {<Route path ="/Predictions" component={Predictions} />}
+//               { </Switch> }
+//               <Header />
+//               <Link to="/Predictions">Predictions</Link>
+//               <Predictions
+//                 users={this.state.users}
+//                 matches={this.state.users}
+//               />
+//               {/* </Nav> */}
+//               <Footer />
 
 export default App;
