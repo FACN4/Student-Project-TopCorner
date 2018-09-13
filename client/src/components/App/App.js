@@ -28,7 +28,7 @@ class App extends Component {
   // fillInputBox = event => {
   //     this.setState(prevState => {
   //       return {
-  //         loginPage.username: prevState.username + 5;
+  //         loginPage.username: prevState.loginPage.username + 5
   //       };
   //     });
   //   }
