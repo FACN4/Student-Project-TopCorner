@@ -4,7 +4,7 @@ import Header from "../Header/Header.js";
 import Predictions from "../Predictions/Predictions.js";
 import Footer from "../Footer/Footer.js";
 import LoadingDiv from "./App.style.js";
-const Loading = require("react-loading-animation");
+import Loading from "react-loading-animation";
 
 class App extends Component {
   constructor() {
@@ -24,7 +24,6 @@ class App extends Component {
       .then(res => Promise.all(res.map(dataset => dataset.json())))
       .then(data => {
         this.setState({ users: data[0], matches: data[1], teams: data[2] });
-        console.log(this.state.matches);
       })
       .catch(err => console.log(err));
   }
@@ -41,7 +40,7 @@ class App extends Component {
       return (
         <Router>
           <div>
-            <Header /> {/* <Nav> */}
+            <Header />
             <Predictions
               users={this.state.users}
               matches={this.state.matches}
