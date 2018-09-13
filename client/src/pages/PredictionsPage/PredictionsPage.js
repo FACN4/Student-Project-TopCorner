@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "../../components/Header/Header.js";
+import Header1 from "../../components/Header1/Header1.js";
 import Table from "../../components/Table/Table.js";
 import Footer from "../../components/Footer/Footer.js";
 
@@ -7,7 +7,7 @@ class PredictionsPage extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header1 />
         <Table users={this.props.users} matches={this.props.matches} />
         <Footer />
       </div>
