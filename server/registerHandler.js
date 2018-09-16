@@ -12,7 +12,6 @@ module.exports = (req, res) => {
   const last_login = new Date().getTime();
   const points = 0;
   const paid = false;
-  console.log(created);
 
   // getMatches()
   //   .then(query => console.log(query.rows.length))
