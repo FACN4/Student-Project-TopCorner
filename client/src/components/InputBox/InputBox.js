@@ -10,6 +10,7 @@ class InputBox extends Component {
           type={this.props.typeProp}
           onChange={this.props.onChangeProp}
         />
+
       </React.Fragment>
     );
   }

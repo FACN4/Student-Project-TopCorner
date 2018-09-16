@@ -22,6 +22,7 @@ class App extends Component {
       newEmail: "",
       newPassword: "",
       newPasswordConfirm: ""
+
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -29,6 +30,7 @@ class App extends Component {
   }
 
   handleChange(event) {
+
     const { name } = event.target;
     const { value } = event.target;
     this.setState({ [name]: value });
@@ -66,6 +68,7 @@ class App extends Component {
     })
       .then(() => console.log("signup successful"))
       .catch(err => console.log(err));
+
   }
 
   componentDidMount() {
@@ -97,6 +100,7 @@ class App extends Component {
             <Route
               path="/login"
               render={() => (
+
                 <LoginPage
                   handleChange={this.handleChange}
                   handleLogin={this.handleLogin}
