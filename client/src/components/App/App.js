@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "../Header/Header.js";
-import Table from "../Table/Table.js";
-import Footer from "../Footer/Footer.js";
 import PredictionsPage from "../../pages/PredictionsPage/PredictionsPage";
 import HomePage from "../../pages/HomePage/HomePage.js";
 import LoginPage from "../../pages/LoginPage/LoginPage.js";
@@ -10,7 +7,6 @@ import SignupPage from "../../pages/SignupPage/SignupPage.js";
 import ProfilePage from "../../pages/ProfilePage/ProfilePage.js";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage.js";
 import PasswordRecoveryPage from "../../pages/PasswordRecoveryPage/PasswordRecoveryPage.js";
-import LoadingDiv from "./App.style.js";
 import Loading from "react-loading-animation";
 
 class App extends Component {
@@ -20,18 +16,56 @@ class App extends Component {
       users: [],
       teams: [],
       matches: [],
-      login: "bennewman",
-      Signup: { username: "", email: "", password: "", confirm: "" }
+      username: "",
+      password: "",
+      newUsername: "",
+      newEmail: "",
+      newPassword: "",
+      newPasswordConfirm: ""
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ login: event.target.value });
+    const { name } = event.target;
+    const { value } = event.target;
+    this.setState({ [name]: value });
   }
 
-  handleSubmit(event) {
-    alert("A name was submitted: " + this.state.login);
+  handleLogin(event) {
     event.preventDefault();
+    const data = {
+      username: this.state.username,
+      password: this.state.password
+    };
+    fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => console.log(res.body))
+      .catch(err => console.log(err));
+  }
+  handleRegister(event) {
+    event.preventDefault();
+    const data = {
+      username: this.state.newUsername,
+      email: this.state.newEmail,
+      password: this.state.newPassword
+    };
+    fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(() => console.log("signup successful"))
+      .catch(err => console.log(err));
   }
 
   componentDidMount() {
@@ -63,10 +97,27 @@ class App extends Component {
             <Route
               path="/login"
               render={() => (
-                <LoginPage func={this.handleChange} data={this.state.login} />
+                <LoginPage
+                  handleChange={this.handleChange}
+                  handleLogin={this.handleLogin}
+                  username={this.state.username}
+                  password={this.state.password}
+                />
               )}
             />
-            <Route path="/signup" render={() => <SignupPage />} />
+            <Route
+              path="/signup"
+              render={() => (
+                <SignupPage
+                  handleChange={this.handleChange}
+                  handleRegister={this.handleRegister}
+                  newUsername={this.state.newUsername}
+                  newPassword={this.state.password}
+                  newPasswordConfirm={this.state.newPasswordConfirm}
+                  newEmail={this.state.newEmail}
+                />
+              )}
+            />
             <Route path="/profile" render={() => <ProfilePage />} />
             <Route
               path="/passwordRecovery"

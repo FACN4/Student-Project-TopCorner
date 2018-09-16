@@ -13,14 +13,28 @@ class LoginPage extends Component {
       <React.Fragment>
         <Header />
         <LoginDiv>
-          <p>Login</p>
-          <InputBox type="text" name="Username" />
-          <InputBox type="password" name="Password" />
-          <Link to="/predictions">
-            <Button img={Login} text="login" />
-          </Link>
+          <form onSubmit={this.props.handleLogin} method="post">
+            <label>
+              Username:
+              <InputBox
+                nameProp="username"
+                typeProp="text"
+                onChangeProp={this.props.handleChange}
+              />
+            </label>
+            <label>
+              Password:
+              <InputBox
+                nameProp="password"
+                typeProp="password"
+                onChangeProp={this.props.handleChange}
+              />
+            </label>
+            <Button imgProp={Login} textProp="login" />
+          </form>
           <Link to="/passwordRecovery">forgot password</Link>
         </LoginDiv>
+
         <Footer />
       </React.Fragment>
     );
