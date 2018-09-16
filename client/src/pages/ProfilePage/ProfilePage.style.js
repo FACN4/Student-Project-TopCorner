@@ -4,8 +4,7 @@ import styled from "styled-components";
 export const Pp = styled.p`
 display: flex;
 justify-content:flex-start;
-color : black ;
-font-family: sans-serif;
+
   `
 
 
