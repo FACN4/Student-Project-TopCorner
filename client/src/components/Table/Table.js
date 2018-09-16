@@ -5,7 +5,7 @@ import {
   PredictionsTable,
   CellHeader,
   CellPoints
-} from "./Predictions.style";
+} from "./Table.style";
 import edit from "../../assets/images/edit.png";
 import dropDown from "../../assets/images/dropDown.svg";
 // import Heyboy from "../../assets/profilePhotos/Heyboy.jpeg";
@@ -13,7 +13,7 @@ import dropDown from "../../assets/images/dropDown.svg";
 // import solGirl from "../../assets/profilePhotos/Solgirl.jpg";
 import bennyboy from "../../assets/profilePhotos/bennyboy.jpeg";
 
-class Predictions extends Component {
+class Table extends Component {
   createTable = () => {
     let table = [];
     const { users, matches } = this.props;
@@ -77,4 +77,4 @@ class Predictions extends Component {
   }
 }
 
-export default Predictions;
+export default Table;

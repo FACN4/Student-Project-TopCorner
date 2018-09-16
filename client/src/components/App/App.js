@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "../Header/Header.js";
-import Predictions from "../Predictions/Predictions.js";
+import Table from "../Table/Table.js";
 import Footer from "../Footer/Footer.js";
+import PredictionsPage from "../../pages/PredictionsPage/PredictionsPage";
+import HomePage from "../../pages/HomePage/HomePage.js";
+import LoginPage from "../../pages/LoginPage/LoginPage.js";
+import SignupPage from "../../pages/SignupPage/SignupPage.js";
+import ProfilePage from "../../pages/ProfilePage/ProfilePage.js";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage.js";
+import PasswordRecoveryPage from "../../pages/PasswordRecoveryPage/PasswordRecoveryPage.js";
 import LoadingDiv from "./App.style.js";
 import Loading from "react-loading-animation";
 
@@ -12,9 +19,16 @@ class App extends Component {
     this.state = {
       users: [],
       teams: [],
-      matches: []
+      matches: [],
+      login: "bennewman",
+      Signup: { username: "", email: "", password: "", confirm: "" }
     };
   }
+
+  handleChange(event) {
+    this.setState({ login: event.target.value });
+  }
+
   componentDidMount() {
     Promise.all([
       fetch("/api/users"),
@@ -39,32 +53,34 @@ class App extends Component {
     } else {
       return (
         <Router>
-          <div>
-            <Header />
-            <Predictions
-              users={this.state.users}
-              matches={this.state.matches}
+          <Switch>
+            <Route exact path="/" render={() => <HomePage />} />
+            <Route
+              path="/login"
+              render={() => (
+                <LoginPage func={this.handleChange} data={this.state.login} />
+              )}
             />
-            <Footer />
-          </div>
+            <Route path="/signup" render={() => <SignupPage />} />
+            <Route path="/profile" render={() => <ProfilePage />} />
+            <Route
+              path="/passwordRecovery"
+              render={() => <PasswordRecoveryPage />}
+            />
+            <Route
+              path="/predictions"
+              render={() => (
+                <PredictionsPage
+                  users={this.state.users}
+                  matches={this.state.matches}
+                />
+              )}
+            />
+            <Route component={NotFoundPage} />
+          </Switch>
         </Router>
       );
     }
   }
 }
-
-// {/<Switch> }
-//               {<Route exact path="/homepage" component={Hompage} />
-// <Route path="/login" component={Login} /> */}
-//               {<Route path ="/Predictions" component={Predictions} />}
-//               { </Switch> }
-//               <Header />
-//               <Link to="/Predictions">Predictions</Link>
-//               <Predictions
-//                 users={this.state.users}
-//                 matches={this.state.users}
-//               />
-//               {/* </Nav> */}
-//               <Footer />
-
 export default App;
