@@ -11,7 +11,7 @@ import ProfilePage from "../../pages/ProfilePage/ProfilePage.js";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage.js";
 import PasswordRecoveryPage from "../../pages/PasswordRecoveryPage/PasswordRecoveryPage.js";
 import LoadingDiv from "./App.style.js";
-const Loading = require("react-loading-animation");
+import Loading from "react-loading-animation";
 
 class App extends Component {
   constructor() {
@@ -20,18 +20,15 @@ class App extends Component {
       users: [],
       teams: [],
       matches: [],
-      loginPage: { username: 0, password: "" },
-      SignupPage: { username: "", email: "", password: "", confirm: "" }
+      login: "bennewman",
+      Signup: { username: "", email: "", password: "", confirm: "" }
     };
   }
 
-  // fillInputBox = event => {
-  //     this.setState(prevState => {
-  //       return {
-  //         loginPage.username: prevState.loginPage.username + 5
-  //       };
-  //     });
-  //   }
+  handleChange(event) {
+    this.setState({ login: event.target.value });
+  }
+
   componentDidMount() {
     Promise.all([
       fetch("/api/users"),
@@ -46,7 +43,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.username);
     if (this.state.teams.length === 0) {
       return (
         <div>
@@ -59,7 +55,12 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" render={() => <HomePage />} />
-            <Route path="/login" render={() => <LoginPage />} />
+            <Route
+              path="/login"
+              render={() => (
+                <LoginPage func={this.handleChange} data={this.state.login} />
+              )}
+            />
             <Route path="/signup" render={() => <SignupPage />} />
             <Route path="/profile" render={() => <ProfilePage />} />
             <Route

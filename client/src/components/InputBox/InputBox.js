@@ -5,11 +5,7 @@ class InputBox extends Component {
     return (
       <React.Fragment>
         <p>{this.props.name}:</p>
-        <StyledInputBox
-          type={this.props.type}
-          value=""
-          placeholder={this.props.name}
-        />
+        <StyledInputBox type={this.props.type} value={this.props.value} />
       </React.Fragment>
     );
   }
