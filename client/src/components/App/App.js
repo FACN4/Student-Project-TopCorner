@@ -38,6 +38,9 @@ class App extends Component {
     if(this.state.dropDown===false){
       this.setState({dropDown : true})
     }
+    else if (this.state.dropDown===true){
+      this.setState({dropDown : false})
+    }
   }
 
   handleChange(event) {
@@ -190,6 +193,7 @@ class App extends Component {
                   users={this.state.users}
                   matches={this.state.matches}
                   dropDown={this.state.dropDown}
+                  dropDownView={this.dropDownView}
                 />
               )}
             />
