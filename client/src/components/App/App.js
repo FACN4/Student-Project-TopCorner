@@ -24,7 +24,9 @@ class App extends Component {
       newPasswordConfirm: "",
       signupError: "",
       signupSuccess: "",
-      disabledProp: true
+      disabledProp: true,
+      loginError: "",
+      userLoggedIn: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -84,8 +86,17 @@ class App extends Component {
       },
       body: JSON.stringify(data)
     })
-      .then(res => console.log(res.body))
-      .catch(err => console.log(err));
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          loginError: res.status
+        });
+      })
+      .catch(err => {
+        this.setState({
+          loginError: err.status
+        });
+      });
   }
 
   handleRegister(event) {
@@ -151,6 +162,7 @@ class App extends Component {
                   handleLogin={this.handleLogin}
                   username={this.state.username}
                   password={this.state.password}
+                  loginError={this.state.loginError}
                 />
               )}
             />
@@ -171,7 +183,10 @@ class App extends Component {
               )}
             />
             <Route path="/signup" render={() => <SignupPage />} />
-            <Route path="/profile" render={() => <ProfilePage users ={this.state.users}/>} />
+            <Route
+              path="/profile"
+              render={() => <ProfilePage users={this.state.users} />}
+            />
 
             <Route
               path="/passwordRecovery"

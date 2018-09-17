@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
-const getMatches = require('./queries/getData');
-const { postNewUser } = require('./queries/postData');
+const getMatches = require('../queries/getData');
+const { postNewUser } = require('../queries/postData');
 
 module.exports = (req, res) => {
   const predictions = '[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]';
@@ -35,13 +35,10 @@ module.exports = (req, res) => {
     ))
     .then(() => res.status(200).send('User successfully created'))
     .catch((err) => {
-      console.log(err);
       if (err.code === 23505) {
-        res
-          .status(500)
-          .send('Username and/or email already exist. Try using a different username.');
+        res.json({ status: 'Username and/or email already exist' });
       } else {
-        res.status(500).send('Error creating a new user. Try again');
+        res.json({ status: 'Error creating a new user. Try again' });
       }
     });
 };

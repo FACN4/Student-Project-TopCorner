@@ -1,12 +1,9 @@
 const express = require('express');
-const session = require('express-session');
-const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const teams = require('./database/teams');
-const matches = require('./database/matches');
-const { getUsers, getMatches, getPassword } = require('./queries/getData');
-const { postNewUser } = require('./queries/postData');
-const registerHandler = require('./registerHandler');
+const { getUsers, getMatches } = require('./queries/getData');
+const registerHandler = require('./handlers/registerHandler');
+const loginHandler = require('./handlers/loginHandler');
 
 const app = express();
 
@@ -37,23 +34,7 @@ app.get('/api/matches', (req, res) => {
       new Error(err);
     });
 });
-app.post('/api/login', (req, res) => {
-  // console.log('im in the server');
-  // res.body('success');
-  // getPassword(req.body.username)
-  // .then(hash => bcrypt.compare(req.body.password, hash)
-  // .then(result => {
-  //   if (result === true) {
-  //     res.redirect('/')
-  //   } else {
-  //     res.body('login failed')
-  //   }
-  // })
-  // .catch(err) => {
-  //   console.log(err);
-  //   new Error(err);
-  // })
-});
+app.post('/api/login', loginHandler);
 app.post('/api/register', registerHandler);
 
 const port = 4040;

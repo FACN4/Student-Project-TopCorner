@@ -5,27 +5,26 @@ import InputBox from "../../components/InputBox/InputBox.js";
 import Button from "../../components/Button/Button.js";
 import Login from "../../assets/images/register.png";
 import { Link } from "react-router-dom";
-import { LoginDiv } from "./LoginPage.style.js";
+import { LoginDiv, ErrorMsg } from "./LoginPage.style.js";
 
 class LoginPage extends Component {
   render() {
-    console.log(this.props);
     return (
       <React.Fragment>
         <Header />
         <LoginDiv>
           <form onSubmit={this.props.handleLogin} method="post">
             <label>
-              Username:
               <InputBox
+                titleProp="Username"
                 nameProp="username"
                 typeProp="text"
                 onChangeProp={this.props.handleChange}
               />
             </label>
             <label>
-              Password:
               <InputBox
+                titleProp="Password"
                 nameProp="password"
                 typeProp="password"
                 onChangeProp={this.props.handleChange}
@@ -33,6 +32,7 @@ class LoginPage extends Component {
             </label>
             <Button imgProp={Login} textProp="login" />
           </form>
+          <ErrorMsg>{this.props.loginError}</ErrorMsg>
           <Link to="/passwordRecovery">forgot password</Link>
         </LoginDiv>
 
