@@ -12,7 +12,6 @@ class ProfilePage extends Component {
   render() {
     console.log(this.props.users[0]);
     return (
-      <Router>
       <React.Fragment>
         <Header/>
         <ProfileImg src={photo}/>
@@ -28,7 +27,6 @@ class ProfilePage extends Component {
           </Link>
       <Footer />
       </React.Fragment>
-      </Router>
     );
   }
   }
