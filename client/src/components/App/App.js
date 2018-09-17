@@ -80,6 +80,7 @@ class App extends Component {
       .then(res => console.log(res.body))
       .catch(err => console.log(err));
   }
+
   handleRegister(event) {
     event.preventDefault();
     const data = {

@@ -9,6 +9,7 @@ import { LoginDiv } from "./LoginPage.style.js";
 
 class LoginPage extends Component {
   render() {
+    console.log(this.props);
     return (
       <React.Fragment>
         <Header />
