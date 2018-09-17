@@ -23,6 +23,8 @@ class App extends Component {
       newPassword: "",
       newPasswordConfirm: "",
       signupError: "",
+      createUserError: "",
+      signupSuccess: "",
       disabledProp: true
     };
     this.handleChange = this.handleChange.bind(this);
@@ -33,7 +35,13 @@ class App extends Component {
   handleChange(event) {
     const { name } = event.target;
     const { value } = event.target;
-    this.setState({ [name]: value });
+    this.setState({
+      [name]: value,
+      signupError: "",
+      createUserError: "",
+      signupSuccess: ""
+    });
+
     let errorMessage = "";
     let disabled = true;
     if (
@@ -42,7 +50,7 @@ class App extends Component {
       this.state.newEmail === ""
     ) {
       errorMessage = "";
-    } else if (!this.state.newUsername.match(/[0-9a-zA-z]{6,20}/g)) {
+    } else if (!this.state.newUsername.match(/[0-9a-zA-Z]{6,20}/g)) {
       errorMessage =
         "Username must contain only numbers and letters with length between 6 and 20";
     } else if (
@@ -95,7 +103,14 @@ class App extends Component {
       },
       body: JSON.stringify(data)
     })
-      .then(() => console.log("signup successful"))
+      .then(res => {
+        if (!res.ok) {
+          throw res;
+        }
+        this.setState({
+          signupSuccess: "Signup success! Please go to the login page"
+        });
+      })
       .catch(err => console.log(err));
   }
 
@@ -148,6 +163,8 @@ class App extends Component {
                   newEmail={this.state.newEmail}
                   signupError={this.state.signupError}
                   disabledProp={this.state.disabledProp}
+                  createUserError={this.state.createUserError}
+                  signupSuccess={this.state.signupSuccess}
                 />
               )}
             />

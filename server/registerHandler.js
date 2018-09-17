@@ -33,6 +33,15 @@ module.exports = (req, res) => {
       points,
       paid,
     ))
-    .then(result => console.log(result))
-    .catch(err => console.log(err));
+    .then(() => res.status(200).send('User successfully created'))
+    .catch((err) => {
+      console.log(err);
+      if (err.code === 23505) {
+        res
+          .status(500)
+          .send('Username and/or email already exist. Try using a different username.');
+      } else {
+        res.status(500).send('Error creating a new user. Try again');
+      }
+    });
 };

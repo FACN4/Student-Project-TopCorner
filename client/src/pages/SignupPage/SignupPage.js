@@ -4,11 +4,10 @@ import Footer from "../../components/Footer/Footer.js";
 import register from "../../assets/images/register.png";
 import InputBox from "../../components/InputBox/InputBox.js";
 import Button from "../../components/Button/Button.js";
-import { SignupDiv, ErrorMsg } from "./SignupPage.style.js";
+import { SignupDiv, ErrorMsg, SuccessMsg } from "./SignupPage.style.js";
 
 class SignupPage extends Component {
   render() {
-    console.log(this.props);
     return (
       <React.Fragment>
         <Header />
@@ -53,7 +52,10 @@ class SignupPage extends Component {
               disabledProp={this.props.disabledProp}
             />
           </form>
-          <ErrorMsg> {this.props.signupError}</ErrorMsg>
+          <ErrorMsg>
+            {this.props.signupError} {this.props.createUserError}
+          </ErrorMsg>
+          <SuccessMsg> {this.props.signupSuccess}</SuccessMsg>
         </SignupDiv>
         <Footer />
       </React.Fragment>

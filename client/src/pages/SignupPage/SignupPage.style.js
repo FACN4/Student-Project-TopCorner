@@ -11,4 +11,7 @@ export const ErrorMsg = styled.span`
   color: red;
   font: bold;
 `;
-ErrorMsg;
+export const SuccessMsg = styled.span`
+  color: green;
+  font: bold;
+`;
