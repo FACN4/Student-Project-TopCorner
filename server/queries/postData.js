@@ -31,6 +31,13 @@ const postNewUser = (
   ];
   return db.query(query, values);
 };
+const postLastLogin = (username) => {
+  const timestamp = new Date().getTime();
+  const query = 'UPDATE users SET last_login=$2 WHERE username=$1';
+  const values = [username, timestamp];
+  return db.query(query, values);
+};
 module.exports = {
   postNewUser,
+  postLastLogin,
 };
