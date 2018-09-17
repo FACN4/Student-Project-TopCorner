@@ -66,8 +66,8 @@ class Table extends Component {
     } else {
       return (
         <StyledPredictionsDiv>
-          <Button img={edit} text="Edit Predictions" />
-          <Button img={dropDown} text="Sort" />
+          <Button imgProp={edit} textProp="Edit Predictions" />
+          <Button imgProp={dropDown} textProp="Sort" />
           <PredictionsTable>
             <tbody>{this.createTable()}</tbody>
           </PredictionsTable>

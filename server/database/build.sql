@@ -11,8 +11,8 @@ CREATE TABLE users (
   YOB INTEGER,
   photo VARCHAR(255),
   groups VARCHAR(255),
-  created TIMESTAMP,
-  last_login TIMESTAMP,
+  created BIGINT,
+  last_login BIGINT,
   predictions VARCHAR(500),
   points INTEGER,
   paid BOOLEAN

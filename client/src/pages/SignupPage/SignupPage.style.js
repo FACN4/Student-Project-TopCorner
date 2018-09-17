@@ -4,4 +4,5 @@ export const SignupDiv = styled.div`
   margin: auto;
   position: absolute;
   top: 150px;
+  left: 200px;
 `;

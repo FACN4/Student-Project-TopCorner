@@ -49,7 +49,6 @@ const insertMatchesPromises = () => {
 };
 const buildDatabase = () => db
   .none(makeEmptyTables)
-  .then(insertUserPromises)
   .then(insertTeamPromises)
   .then(insertMatchesPromises)
   .catch((err) => {

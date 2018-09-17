@@ -5,8 +5,8 @@ class Button extends Component {
   render() {
     return (
       <ButtonGen>
-        <BtnImg src={this.props.img} />
-        {` ${this.props.text}`}
+        <BtnImg src={this.props.imgProp} />
+        {` ${this.props.textProp}`}
       </ButtonGen>
     );
   }
