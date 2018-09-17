@@ -45,9 +45,9 @@ class App extends Component {
     let errorMessage = "";
     let disabled = true;
     if (
-      this.state.newUsername === "" &&
-      this.state.newPassword === "" &&
-      this.state.newEmail === ""
+      this.state.newUsername.trim() === "" &&
+      this.state.newPassword.trim() === "" &&
+      this.state.newEmail.trim() === ""
     ) {
       errorMessage = "";
     } else if (!this.state.newUsername.match(/[0-9a-zA-Z]{6,20}/g)) {
