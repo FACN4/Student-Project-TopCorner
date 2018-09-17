@@ -23,7 +23,6 @@ class App extends Component {
       newPassword: "",
       newPasswordConfirm: "",
       signupError: "",
-      createUserError: "",
       signupSuccess: "",
       disabledProp: true
     };
@@ -111,7 +110,11 @@ class App extends Component {
           signupSuccess: "Signup success! Please go to the login page"
         });
       })
-      .catch(err => console.log(err));
+      .catch(() =>
+        this.setState({
+          signupError: "Username and/or email already exist"
+        })
+      );
   }
 
   componentDidMount() {
@@ -163,7 +166,6 @@ class App extends Component {
                   newEmail={this.state.newEmail}
                   signupError={this.state.signupError}
                   disabledProp={this.state.disabledProp}
-                  createUserError={this.state.createUserError}
                   signupSuccess={this.state.signupSuccess}
                 />
               )}
