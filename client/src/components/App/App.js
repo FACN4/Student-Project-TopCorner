@@ -21,9 +21,14 @@ class App extends Component {
       newUsername: "",
       newEmail: "",
       newPassword: "",
+<<<<<<< HEAD
       newPasswordConfirm: "",
       signupError: "",
       disabledProp: true
+=======
+      newPasswordConfirm: ""
+
+>>>>>>> master
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -31,6 +36,10 @@ class App extends Component {
   }
 
   handleChange(event) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     const { name } = event.target;
     const { value } = event.target;
     this.setState({ [name]: value });
@@ -97,6 +106,10 @@ class App extends Component {
     })
       .then(() => console.log("signup successful"))
       .catch(err => console.log(err));
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   }
 
   componentDidMount() {
@@ -128,6 +141,10 @@ class App extends Component {
             <Route
               path="/login"
               render={() => (
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
                 <LoginPage
                   handleChange={this.handleChange}
                   handleLogin={this.handleLogin}
