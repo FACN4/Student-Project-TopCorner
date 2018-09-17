@@ -1,8 +1,9 @@
 const bcrypt = require('bcrypt');
 const { sign, verify } = require('jsonwebtoken');
-
 const { getPassword } = require('../queries/getData');
 const { postLastLogin } = require('../queries/postData');
+
+const { SECRET } = process.env;
 
 module.exports = (req, res) => {
   getPassword(req.body.username).then((passwordInDatabase) => {
@@ -14,14 +15,14 @@ module.exports = (req, res) => {
       .compare(req.body.password, passwordInDatabase[0].password)
       .then((result) => {
         if (result === true) {
-          postLastLogin(req.body.username).then(() => console.log);
-          res.json({ status: 'login success' });
+          const cookie = sign(req.body.username, SECRET);
+          res.json({ status: 'login success', cookie });
+          res.end();
         } else {
           res.json({ status: 'Incorrect password' });
         }
       })
-      .catch((err) => {
-        getPassword(req.body.username).then(password => console.log(password));
+      .catch(() => {
         res.json({ status: 'Unknown server error. Try again later' });
       });
   });

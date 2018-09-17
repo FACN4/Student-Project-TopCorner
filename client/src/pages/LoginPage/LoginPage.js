@@ -33,7 +33,7 @@ class LoginPage extends Component {
             <Button imgProp={Login} textProp="login" />
           </form>
           <ErrorMsg>{this.props.loginError}</ErrorMsg>
-          <Link to="/passwordRecovery">forgot password</Link>
+          <Link to="/passwordRecovery">Forgot password?</Link>
         </LoginDiv>
 
         <Footer />

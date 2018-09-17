@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
+    console.log(this.props);
     return (
       <HeaderDiv>
         <HeaderImg src={football} alt="Logo" />
         <Link to="/profile">Profile</Link>
-        <Link to="/login">Log Out</Link>
+        <button onClick={this.props.handleLogout}>Log Out</button>
       </HeaderDiv>
     );
   }
