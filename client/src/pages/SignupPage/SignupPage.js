@@ -4,7 +4,7 @@ import Footer from "../../components/Footer/Footer.js";
 import register from "../../assets/images/register.png";
 import InputBox from "../../components/InputBox/InputBox.js";
 import Button from "../../components/Button/Button.js";
-import { SignupDiv } from "./SignupPage.style.js";
+import { SignupDiv, ErrorMsg, SuccessMsg } from "./SignupPage.style.js";
 
 class SignupPage extends Component {
   render() {
@@ -12,42 +12,50 @@ class SignupPage extends Component {
       <React.Fragment>
         <Header />
         <SignupDiv>
-          <p> Sign Up </p>
+          <h1> Sign Up </h1>
           <form onSubmit={this.props.handleRegister} method="post">
             <label>
-              <p> Username</p>
               <InputBox
+                titleProp="Username"
                 nameProp="newUsername"
                 typeProp="text"
                 onChangeProp={this.props.handleChange}
               />
             </label>
             <label>
-              <p>Email</p>
               <InputBox
+                titleProp="Email"
                 nameProp="newEmail"
                 typeProp="email"
                 onChangeProp={this.props.handleChange}
               />
             </label>
             <label>
-              <p>Password</p>
               <InputBox
+                titleProp="Password"
                 nameProp="newPassword"
                 typeProp="password"
                 onChangeProp={this.props.handleChange}
               />
             </label>
             <label>
-              <p> confirm password </p>
               <InputBox
+                titleProp="Confirm Password"
                 nameProp="newPasswordConfirm"
                 typeProp="password"
                 onChangeProp={this.props.handleChange}
               />
             </label>
-            <Button imgProp={register} textProp="Register" />
+            <Button
+              imgProp={register}
+              textProp="Register"
+              disabledProp={this.props.disabledProp}
+            />
           </form>
+          <ErrorMsg>
+            {this.props.signupError} {this.props.createUserError}
+          </ErrorMsg>
+          <SuccessMsg> {this.props.signupSuccess}</SuccessMsg>
         </SignupDiv>
         <Footer />
       </React.Fragment>

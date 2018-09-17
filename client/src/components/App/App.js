@@ -21,8 +21,11 @@ class App extends Component {
       newUsername: "",
       newEmail: "",
       newPassword: "",
-      newPasswordConfirm: ""
-
+      newPasswordConfirm: "",
+      signupError: "",
+      createUserError: "",
+      signupSuccess: "",
+      disabledProp: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -30,10 +33,43 @@ class App extends Component {
   }
 
   handleChange(event) {
-
     const { name } = event.target;
     const { value } = event.target;
-    this.setState({ [name]: value });
+    this.setState({
+      [name]: value,
+      signupError: "",
+      createUserError: "",
+      signupSuccess: ""
+    });
+
+    let errorMessage = "";
+    let disabled = true;
+    if (
+      this.state.newUsername.trim() === "" &&
+      this.state.newPassword.trim() === "" &&
+      this.state.newEmail.trim() === ""
+    ) {
+      errorMessage = "";
+    } else if (!this.state.newUsername.match(/[0-9a-zA-Z]{6,20}/g)) {
+      errorMessage =
+        "Username must contain only numbers and letters with length between 6 and 20";
+    } else if (
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.newEmail)
+    ) {
+      errorMessage = "Must use a valid email address";
+    } else if (!this.state.newPassword.match(/[0-9a-zA-z]{6,20}/g)) {
+      errorMessage =
+        "Password must contain only numbers and letters with length between 6 and 20";
+    } else if (this.state.newPasswordConfirm !== this.state.newPassword) {
+      errorMessage = "Passwords do not match";
+    } else {
+      errorMessage = "";
+      disabled = false;
+    }
+    this.setState({
+      signupError: errorMessage,
+      disabledProp: disabled
+    });
   }
 
   handleLogin(event) {
@@ -52,6 +88,7 @@ class App extends Component {
       .then(res => console.log(res.body))
       .catch(err => console.log(err));
   }
+
   handleRegister(event) {
     event.preventDefault();
     const data = {
@@ -66,9 +103,15 @@ class App extends Component {
       },
       body: JSON.stringify(data)
     })
-      .then(() => console.log("signup successful"))
+      .then(res => {
+        if (!res.ok) {
+          throw res;
+        }
+        this.setState({
+          signupSuccess: "Signup success! Please go to the login page"
+        });
+      })
       .catch(err => console.log(err));
-
   }
 
   componentDidMount() {
@@ -100,7 +143,6 @@ class App extends Component {
             <Route
               path="/login"
               render={() => (
-
                 <LoginPage
                   handleChange={this.handleChange}
                   handleLogin={this.handleLogin}
@@ -116,9 +158,13 @@ class App extends Component {
                   handleChange={this.handleChange}
                   handleRegister={this.handleRegister}
                   newUsername={this.state.newUsername}
-                  newPassword={this.state.password}
+                  newPassword={this.state.newPassword}
                   newPasswordConfirm={this.state.newPasswordConfirm}
                   newEmail={this.state.newEmail}
+                  signupError={this.state.signupError}
+                  disabledProp={this.state.disabledProp}
+                  createUserError={this.state.createUserError}
+                  signupSuccess={this.state.signupSuccess}
                 />
               )}
             />

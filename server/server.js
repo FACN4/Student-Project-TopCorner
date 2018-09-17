@@ -38,8 +38,8 @@ app.get('/api/matches', (req, res) => {
     });
 });
 app.post('/api/login', (req, res) => {
-  console.log('im in the server');
-  res.body('success');
+  // console.log('im in the server');
+  // res.body('success');
   // getPassword(req.body.username)
   // .then(hash => bcrypt.compare(req.body.password, hash)
   // .then(result => {
