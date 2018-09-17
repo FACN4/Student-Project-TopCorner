@@ -122,7 +122,9 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/profile" render={() => <ProfilePage />} />
+            <Route path="/signup" render={() => <SignupPage />} />
+            <Route path="/profile" render={() => <ProfilePage users ={this.state.users}/>} />
+
             <Route
               path="/passwordRecovery"
               render={() => <PasswordRecoveryPage />}
