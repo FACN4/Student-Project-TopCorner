@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const SignupDiv = styled.div`
   margin: auto;
   position: absolute;
-  top: 150px;
-  left: 200px;
+  top: 250px;
+  left: 250px;
 `;
 
 export const ErrorMsg = styled.span`

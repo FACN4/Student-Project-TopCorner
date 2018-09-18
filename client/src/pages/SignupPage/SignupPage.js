@@ -52,9 +52,7 @@ class SignupPage extends Component {
               disabledProp={this.props.disabledProp}
             />
           </form>
-          <ErrorMsg>
-            {this.props.signupError} {this.props.createUserError}
-          </ErrorMsg>
+          <ErrorMsg>{this.props.signupError}</ErrorMsg>
           <SuccessMsg> {this.props.signupSuccess}</SuccessMsg>
         </SignupDiv>
         <Footer />

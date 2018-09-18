@@ -14,8 +14,8 @@ class Header extends Component {
         <Div>
           <Profileimg src={photo} onClick={this.props.dropDownView}/>
         {this.props.dropDown && <div>
-        <Links to="/profile">Profile</Links>
-        <Links to="/login">Log Out</Links>
+        <Link to="/profile">Profile</Link>
+        <button onClick={this.props.handleLogout}>Log Out</button>
       </div>}
       </Div>
 

@@ -2,3 +2,6 @@ node_modules
 package-lock.json
 config.env
 .nyc_output
+build
+.sizecache.json
+*.log*
