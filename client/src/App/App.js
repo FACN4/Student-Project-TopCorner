@@ -82,15 +82,19 @@ class App extends Component {
             <Route exact path="/" render={() => <HomePage />} />
             <Route
               path="/login"
-              render={() => (
-                <LoginPage
-                  handleChange={this.handleChange}
-                  handleLogin={this.handleLogin}
-                  username={this.state.username}
-                  password={this.state.password}
-                  loginError={this.state.loginError}
-                />
-              )}
+              render={() =>
+                !this.state.auth ? (
+                  <LoginPage
+                    handleChange={this.handleChange}
+                    handleLogin={this.handleLogin}
+                    username={this.state.username}
+                    password={this.state.password}
+                    loginError={this.state.loginError}
+                  />
+                ) : (
+                  <Redirect to="/predictions" />
+                )
+              }
             />
             <Route
               path="/signup"
