@@ -26,7 +26,9 @@ class App extends Component {
       createUserError: "",
       signupSuccess: "",
       disabledProp: true,
-      dropDown: false
+      dropDown: false,
+      loginError: "",
+      userLoggedIn: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
