@@ -13,6 +13,7 @@ class LoginPage extends Component {
       <React.Fragment>
         <Header />
         <LoginDiv>
+          <h1> Log In </h1>
           <form onSubmit={this.props.handleLogin} method="post">
             <label>
               <InputBox
@@ -33,7 +34,7 @@ class LoginPage extends Component {
             <Button imgProp={Login} textProp="login" />
           </form>
           <ErrorMsg>{this.props.loginError}</ErrorMsg>
-          <Link to="/passwordRecovery">forgot password</Link>
+          <Link to="/passwordRecovery">Forgot password?</Link>
         </LoginDiv>
 
         <Footer />

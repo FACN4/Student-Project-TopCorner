@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const { sign, verify } = require('jsonwebtoken');
+const { sign } = require('jsonwebtoken');
 const { getPassword } = require('../queries/getData');
 const { postLastLogin } = require('../queries/postData');
 
@@ -17,9 +17,22 @@ module.exports = (req, res) => {
         .then((result) => {
           if (result === true) {
             const cookie = sign(req.body.username, SECRET);
-            res.json({ status: 'login success', cookie });
-            res.end();
-          } else {
+            postLastLogin(req.body.username)
+              .then(() => {
+                res.cookie('user_auth', cookie);
+                res.json({
+                  status: 'login success',
+                });
+                res.end();
+              })
+              .catch(() => {
+                res.cookie('user_auth', cookie);
+                res.json({
+                  status: 'login success, but failed to update last login',
+                });
+                res.end();
+              });
+          } else if (result === false) {
             res.json({ status: 'Incorrect password' });
           }
         })

@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import PredictionsPage from "../../pages/PredictionsPage/PredictionsPage";
 import HomePage from "../../pages/HomePage/HomePage.js";
 import LoginPage from "../../pages/LoginPage/LoginPage.js";
@@ -8,6 +13,8 @@ import ProfilePage from "../../pages/ProfilePage/ProfilePage.js";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage.js";
 import PasswordRecoveryPage from "../../pages/PasswordRecoveryPage/PasswordRecoveryPage.js";
 import Loading from "react-loading-animation";
+import Cookies from "js-cookie";
+import validateCookie from "../../helpers/validateCookie";
 
 class App extends Component {
   constructor() {
@@ -27,11 +34,11 @@ class App extends Component {
       disabledProp: true,
       dropDown: false
       loginError: "",
-      userLoggedIn: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
 
@@ -84,6 +91,10 @@ class App extends Component {
     })
   };
 
+  handleLogout(event) {
+    Cookies.remove("user_auth");
+  }
+
   handleLogin(event) {
     event.preventDefault();
     const data = {
@@ -99,9 +110,7 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        this.setState({
-          loginError: res.status
-        });
+        this.setState({ loginError: res.status });
       })
       .catch(err => {
         this.setState({
@@ -196,7 +205,13 @@ class App extends Component {
             <Route path="/signup" render={() => <SignupPage />} />
             <Route
               path="/profile"
-              render={() => <ProfilePage users={this.state.users} />}
+              render={() =>
+                true ? (
+                  <ProfilePage users={this.state.users} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
             />
 
             <Route
@@ -205,14 +220,17 @@ class App extends Component {
             />
             <Route
               path="/predictions"
-              render={() => (
-                <PredictionsPage
-                  users={this.state.users}
-                  matches={this.state.matches}
-                  dropDown={this.state.dropDown}
-                  dropDownView={this.dropDownView}
-                />
-              )}
+              render={() =>
+                true ? (
+                  <PredictionsPage
+                    users={this.state.users}
+                    matches={this.state.matches}
+                    handleLogout={this.handleLogout}
+                  />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
             />
             <Route component={NotFoundPage} />
           </Switch>
