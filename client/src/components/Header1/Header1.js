@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
-    console.log(this.props);
     return (
       <HeaderDiv>
         <HeaderImg src={football} alt="Logo" />

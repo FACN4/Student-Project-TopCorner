@@ -13,6 +13,7 @@ class LoginPage extends Component {
       <React.Fragment>
         <Header />
         <LoginDiv>
+          <h1> Log In </h1>
           <form onSubmit={this.props.handleLogin} method="post">
             <label>
               <InputBox

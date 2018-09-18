@@ -37,6 +37,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleChange(event) {
@@ -99,13 +100,14 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
-        Cookies.set("user_auth", res.cookie);
-        // Cookies.remove("user_auth");
-        this.setState({
-          loginError: res.status,
-          auth: true
-        });
+        this.setState({ loginError: res.status });
+        if (res.cookie) {
+          Cookies.set("user_auth", res.cookie);
+          this.setState({
+            auth: true,
+            userLoggedIn: res.user
+          });
+        }
       })
       .catch(err => {
         this.setState({
@@ -204,7 +206,13 @@ class App extends Component {
             <Route path="/signup" render={() => <SignupPage />} />
             <Route
               path="/profile"
-              render={() => <ProfilePage users={this.state.users} />}
+              render={() =>
+                this.state.auth ? (
+                  <ProfilePage users={this.state.users} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
             />
 
             <Route
@@ -213,13 +221,17 @@ class App extends Component {
             />
             <Route
               path="/predictions"
-              render={() => (
-                <PredictionsPage
-                  users={this.state.users}
-                  matches={this.state.matches}
-                  handleLogout={this.handleLogout}
-                />
-              )}
+              render={() =>
+                this.state.auth ? (
+                  <PredictionsPage
+                    users={this.state.users}
+                    matches={this.state.matches}
+                    handleLogout={this.handleLogout}
+                  />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
             />
             <Route component={NotFoundPage} />
           </Switch>
