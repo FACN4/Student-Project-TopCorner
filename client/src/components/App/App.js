@@ -14,6 +14,8 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage.js";
 import PasswordRecoveryPage from "../../pages/PasswordRecoveryPage/PasswordRecoveryPage.js";
 import Loading from "react-loading-animation";
 import Cookies from "js-cookie";
+import validateCookie from "../../helpers/validateCookie";
+
 class App extends Component {
   constructor() {
     super();
@@ -30,9 +32,7 @@ class App extends Component {
       signupError: "",
       signupSuccess: "",
       disabledProp: true,
-      loginError: "",
-      userLoggedIn: "",
-      auth: false
+      loginError: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -79,12 +79,11 @@ class App extends Component {
       disabledProp: disabled
     });
   }
+
   handleLogout(event) {
     Cookies.remove("user_auth");
-    this.setState({
-      auth: false
-    });
   }
+
   handleLogin(event) {
     event.preventDefault();
     const data = {
@@ -101,13 +100,6 @@ class App extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({ loginError: res.status });
-        if (res.cookie) {
-          Cookies.set("user_auth", res.cookie);
-          this.setState({
-            auth: true,
-            userLoggedIn: res.user
-          });
-        }
       })
       .catch(err => {
         this.setState({
@@ -173,19 +165,15 @@ class App extends Component {
             <Route exact path="/" render={() => <HomePage />} />
             <Route
               path="/login"
-              render={() =>
-                !this.state.auth ? (
-                  <LoginPage
-                    handleChange={this.handleChange}
-                    handleLogin={this.handleLogin}
-                    username={this.state.username}
-                    password={this.state.password}
-                    loginError={this.state.loginError}
-                  />
-                ) : (
-                  <Redirect to="/predictions" />
-                )
-              }
+              render={() => (
+                <LoginPage
+                  handleChange={this.handleChange}
+                  handleLogin={this.handleLogin}
+                  username={this.state.username}
+                  password={this.state.password}
+                  loginError={this.state.loginError}
+                />
+              )}
             />
             <Route
               path="/signup"
@@ -207,7 +195,7 @@ class App extends Component {
             <Route
               path="/profile"
               render={() =>
-                this.state.auth ? (
+                true ? (
                   <ProfilePage users={this.state.users} />
                 ) : (
                   <Redirect to="/login" />
@@ -222,7 +210,7 @@ class App extends Component {
             <Route
               path="/predictions"
               render={() =>
-                this.state.auth ? (
+                true ? (
                   <PredictionsPage
                     users={this.state.users}
                     matches={this.state.matches}
