@@ -25,12 +25,23 @@ class App extends Component {
       signupError: "",
       signupSuccess: "",
       disabledProp: true,
+      dropDown: false
       loginError: "",
       userLoggedIn: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+  }
+
+
+  dropDownView(){
+    if(this.state.dropDown===false){
+      this.setState({dropDown : true})
+    }
+    else if (this.state.dropDown===true){
+      this.setState({dropDown : false})
+    }
   }
 
   handleChange(event) {
@@ -70,8 +81,8 @@ class App extends Component {
     this.setState({
       signupError: errorMessage,
       disabledProp: disabled
-    });
-  }
+    })
+  };
 
   handleLogin(event) {
     event.preventDefault();
@@ -198,6 +209,8 @@ class App extends Component {
                 <PredictionsPage
                   users={this.state.users}
                   matches={this.state.matches}
+                  dropDown={this.state.dropDown}
+                  dropDownView={this.dropDownView}
                 />
               )}
             />
