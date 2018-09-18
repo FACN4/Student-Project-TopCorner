@@ -7,7 +7,7 @@ class PredictionsPage extends Component {
   render() {
     return (
       <div>
-        <Header1 handleLogout={this.props.handleLogout} />
+        <Header1 handleLogout={this.props.handleLogout} dropDown={this.props.dropDown} dropDownView={this.props.dropDownView}/>
         <Table users={this.props.users} matches={this.props.matches} />
         <Footer />
       </div>

@@ -32,12 +32,23 @@ class App extends Component {
       signupError: "",
       signupSuccess: "",
       disabledProp: true,
-      loginError: ""
+      dropDown: false
+      loginError: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+  }
+
+
+  dropDownView(){
+    if(this.state.dropDown===false){
+      this.setState({dropDown : true})
+    }
+    else if (this.state.dropDown===true){
+      this.setState({dropDown : false})
+    }
   }
 
   handleChange(event) {
@@ -77,8 +88,8 @@ class App extends Component {
     this.setState({
       signupError: errorMessage,
       disabledProp: disabled
-    });
-  }
+    })
+  };
 
   handleLogout(event) {
     Cookies.remove("user_auth");
