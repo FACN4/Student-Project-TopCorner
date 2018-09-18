@@ -4,6 +4,7 @@ import football from "../../assets/images/football.png";
 import { Link } from "react-router-dom";
 import photo from "../../assets/profilePhotos/HELLOMATE.jpg";
 
+
 class Header extends Component {
   render() {
     console.log(this.props);
@@ -12,7 +13,7 @@ class Header extends Component {
         <HeaderImg src={football} alt="Logo" />
         <Div>
 
-          <Profileimg src={photo} onclick={this.props.dropDownView}/>
+          <Profileimg src={photo} onClick={this.props.dropDownView}/>
         {this.props.dropDown && <div>
         <Link to="/profile">Profile</Link>
         <Link to="/login">Log Out</Link>
