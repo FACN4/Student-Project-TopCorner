@@ -108,19 +108,23 @@ class App extends Component {
             />
             <Route
               path="/signup"
-              render={() => (
-                <SignupPage
-                  handleChange={this.handleChange}
-                  handleRegister={this.handleRegister}
-                  newUsername={this.state.newUsername}
-                  newPassword={this.state.newPassword}
-                  newPasswordConfirm={this.state.newPasswordConfirm}
-                  newEmail={this.state.newEmail}
-                  signupError={this.state.signupError}
-                  disabledProp={this.state.disabledProp}
-                  signupSuccess={this.state.signupSuccess}
-                />
-              )}
+              render={() =>
+                !this.state.auth ? (
+                  <SignupPage
+                    handleChange={this.handleChange}
+                    handleRegister={this.handleRegister}
+                    newUsername={this.state.newUsername}
+                    newPassword={this.state.newPassword}
+                    newPasswordConfirm={this.state.newPasswordConfirm}
+                    newEmail={this.state.newEmail}
+                    signupError={this.state.signupError}
+                    disabledProp={this.state.disabledProp}
+                    signupSuccess={this.state.signupSuccess}
+                  />
+                ) : (
+                  <Redirect to="/predictions" />
+                )
+              }
             />
             <Route path="/signup" render={() => <SignupPage />} />
             <Route

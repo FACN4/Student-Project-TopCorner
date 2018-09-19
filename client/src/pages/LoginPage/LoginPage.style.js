@@ -10,4 +10,5 @@ export const LoginDiv = styled.div`
 export const ErrorMsg = styled.span`
   color: red;
   font: bold;
+  height: 30px;
 `;

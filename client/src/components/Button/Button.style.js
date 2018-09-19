@@ -6,7 +6,7 @@ export const ButtonGen = styled.button`
   border-color: black;
   border-width: 1px;
   border-radius: 5px;
-  height: 40px;
+  height: 37px;
   font-family: "Reem Kufi", sans-serif;
   font-size: 20px;
 `;

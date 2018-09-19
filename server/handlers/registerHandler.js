@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const getMatches = require('../queries/getData');
+const { sign } = require('jsonwebtoken');
 const { postNewUser } = require('../queries/postData');
 
 const { SECRET } = process.env;

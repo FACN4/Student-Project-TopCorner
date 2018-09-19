@@ -19,6 +19,12 @@ function handleRegister(event) {
       this.setState({
         signupSuccess: "Signup success! Please go to the login page"
       });
+      return true;
+    })
+    .then(res => {
+      if (res === true) {
+        window.location.reload();
+      }
     })
     .catch(() =>
       this.setState({
