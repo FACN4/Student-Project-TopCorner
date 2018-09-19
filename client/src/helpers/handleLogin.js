@@ -14,6 +14,14 @@ function handleLogin(event) {
     .then(res => res.json())
     .then(res => {
       this.setState({ loginError: res.status });
+      if (res.status === "login success") {
+        return true;
+      }
+    })
+    .then(res => {
+      if (res === true) {
+        window.location.reload();
+      }
     })
     .catch(err => {
       this.setState({

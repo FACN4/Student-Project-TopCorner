@@ -36,13 +36,15 @@ class App extends Component {
       disabledProp: true,
       loginError: "",
       auth: false,
-      authUser: null
+      authUser: null,
+      dropDown: false
     };
     this.handleChange = handleChange.bind(this);
     this.handleLogin = handleLogin.bind(this);
     this.handleRegister = handleRegister.bind(this);
     this.handleLogout = handleLogout.bind(this);
     this.validateCookieTF = validateCookieTF.bind(this);
+    this.dropDownView = this.dropDownView.bind(this);
   }
 
   handleChange;
@@ -52,6 +54,14 @@ class App extends Component {
   handleLogin;
 
   handleRegister;
+
+  dropDownView() {
+    if (this.state.dropDown === false) {
+      this.setState({ dropDown: true });
+    } else if (this.state.dropDown === true) {
+      this.setState({ dropDown: false });
+    }
+  }
 
   componentDidMount() {
     validateCookieTF(this);
@@ -140,6 +150,8 @@ class App extends Component {
                     matches={this.state.matches}
                     handleLogout={this.handleLogout}
                     authUser={this.state.authUser}
+                    dropDown={this.state.dropDown}
+                    dropDownView={this.dropDownView}
                   />
                 ) : (
                   <Redirect to="/login" />

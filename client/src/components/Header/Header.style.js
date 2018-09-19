@@ -36,6 +36,7 @@ export const Div = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-export const topCorner = styled.h1`
-  font-size: 2em;
+export const TopCorner = styled.h1`
+  position: absolute;
+  right: 100px;
 `;

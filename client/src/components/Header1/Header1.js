@@ -5,7 +5,10 @@ import {
   Div,
   Profileimg,
   TopCorner,
-  Links
+  Links,
+  Button,
+  Dropdown,
+  DropdownElement
 } from "../Header1/Header1.style.js";
 import football from "../../assets/images/football.png";
 import photo from "../../assets/profilePhotos/HELLOMATE.jpg";
@@ -17,15 +20,21 @@ class Header extends Component {
         <HeaderImg src={football} alt="Logo" />
         <TopCorner>Top Corner</TopCorner>
 
-        <Div>
-          <Profileimg src={photo} onClick={this.props.dropDownView} />
-          {this.props.dropDown && (
-            <div>
-              <Links to="/profile">Profile</Links>
-              <button onClick={this.props.handleLogout}>Log Out</button>
-            </div>
-          )}
-        </Div>
+        <Profileimg src={photo} onClick={this.props.dropDownView} />
+        {this.props.dropDown && (
+          <Dropdown>
+            <DropdownElement>
+              <Links to="/profile" width="165px;">
+                <Button>Profile</Button>
+              </Links>
+            </DropdownElement>
+            <DropdownElement>
+              <Links to="/login">
+                <Button onClick={this.props.handleLogout}>Log Out</Button>
+              </Links>
+            </DropdownElement>
+          </Dropdown>
+        )}
       </HeaderDiv>
     );
   }

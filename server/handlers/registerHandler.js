@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const getMatches = require('../queries/getData');
 const { postNewUser } = require('../queries/postData');
 
+const { SECRET } = process.env;
+
 module.exports = (req, res) => {
   const predictions = '[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]';
   const bio = '...';
@@ -33,7 +35,11 @@ module.exports = (req, res) => {
       points,
       paid,
     ))
-    .then(() => res.status(200).send('User successfully created'))
+    .then(() => {
+      const cookie = sign(req.body.username, SECRET);
+      res.cookie('user_auth', cookie);
+      res.status(200).send('User successfully created');
+    })
     .catch((err) => {
       if (err.code === 23505) {
         res.json({ status: 'Username and/or email already exist' });
