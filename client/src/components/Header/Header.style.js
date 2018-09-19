@@ -21,12 +21,21 @@ export const Links = styled(Link)`
     display: inline-block;
     background-color: white;
   }
+  &:visited ${Links} {
+    color: black;
+  }
+  &:active ${Links} {
+    color: lime;
+  }
 `;
 export const Div = styled.div`
-  margin: 49px 10px;
-  font-size: 28px;
+  margin: 35px 10px;
+  font-size: 40px;
   float: right;
-  width: 15%;
+  width: 25%;
   display: flex;
   justify-content: space-between;
+`;
+export const topCorner = styled.h1`
+  font-size: 2em;
 `;

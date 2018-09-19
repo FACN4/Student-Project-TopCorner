@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "../../components/Header/Header.js";
+import Header2 from "../../components/Header2/Header2.js";
 import Footer from "../../components/Footer/Footer.js";
 import { Link} from "react-router-dom";
 import { Pp , ProfileImg , EditButton ,createButton } from "./ProfilePage.style.js";
@@ -12,7 +12,7 @@ class ProfilePage extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header/>
+        <Header2/>
         <ProfileImg src={photo}/>
           <Link to="/edit">
           <EditButton img={edit} text="Edit" />

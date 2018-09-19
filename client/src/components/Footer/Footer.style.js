@@ -10,5 +10,8 @@ export const FooterDiv = styled.div`
 export const FooterP = styled.p`
   color: white;
   position: relative;
-  margins: auto;
+  margin : auto;
+  display: flex;
+  justify-content: center;
+
 `;
