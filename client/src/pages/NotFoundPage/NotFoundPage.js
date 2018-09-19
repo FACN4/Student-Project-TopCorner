@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-
+import notFound from "../../assets/images/404.png";
+import { Div404, Header404, Small404 } from "./NotFoundPage.style.js";
 class NotFoundPage extends Component {
   render() {
     return (
-      <div>
-        <p> NOT FOUND!! </p>
-      </div>
+      <Div404>
+        <Header404> 404.</Header404>
+        <Small404> Page Not Found</Small404>
+      </Div404>
     );
   }
 }

@@ -18,11 +18,6 @@ app.use(cookieParser());
 
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-  console.log(req.cookies);
-  next();
-});
-
 app.get('/api/users', (req, res) => {
   getUsers()
     .then(users => res.json(users))

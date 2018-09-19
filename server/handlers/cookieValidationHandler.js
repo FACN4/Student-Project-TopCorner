@@ -4,20 +4,15 @@ const { SECRET } = process.env;
 
 module.exports = (req, res) => {
   const decodedCookie = new Promise((resolve) => {
-    resolve(verify(req.body.user_auth, SECRET));
+    resolve(verify(req.cookies.user_auth, SECRET));
   });
   decodedCookie
     .then((user) => {
-      if (typeof user !== 'string') {
-        throw user;
-      }
-      console.log(`IM A USER >>>${user}`);
-      res.json({ auth: true, username: user });
+      res.json({ username: user });
       res.end();
     })
     .catch((err) => {
-      console.log('I GOT THROWN');
-      res.json({ auth: false, username: null });
+      res.json({ username: null });
       res.end();
     });
 };
