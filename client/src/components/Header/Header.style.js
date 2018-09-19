@@ -5,8 +5,9 @@ export const HeaderDiv = styled.div`
   position: fixed;
   top: 0px;
   width: 100%;
-  height: 90px;
+  height: 100px;
   background-color: #2ed573;
+  z-index: 1;
 `;
 export const HeaderImg = styled.img`
   height: 90%;
@@ -15,17 +16,17 @@ export const HeaderImg = styled.img`
   top: 5%;
 `;
 export const Links = styled(Link)`
-  font-style :normal;
+  font-style: normal;
   &:hover ${Links} {
-  display:inline-block;
-  background-color: white;
-}
-`
+    display: inline-block;
+    background-color: white;
+  }
+`;
 export const Div = styled.div`
-margin : 49px 10px;
-font-size:28px;
-float : right ;
-width: 15%;
-display : flex;
-justify-content: space-between;
-`
+  margin: 49px 10px;
+  font-size: 28px;
+  float: right;
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+`;
