@@ -32,12 +32,14 @@ class App extends Component {
       signupError: "",
       signupSuccess: "",
       disabledProp: true,
-      dropDown: false
+      dropDown: false,
       loginError: "",
+      userLoggedIn: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+    this.dropDownView = this.dropDownView.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
 
