@@ -4,7 +4,7 @@ class InputBox extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>{this.props.titleProp}:</p>
+        <h2>{this.props.titleProp}:</h2>
         <StyledInputBox
           name={this.props.nameProp}
           type={this.props.typeProp}

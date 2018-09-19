@@ -5,7 +5,7 @@ import InputBox from "../../components/InputBox/InputBox.js";
 import Button from "../../components/Button/Button.js";
 import Login from "../../assets/images/register.png";
 import { Link } from "react-router-dom";
-import { LoginDiv, ErrorMsg } from "./LoginPage.style.js";
+import { LoginDiv, ErrorMsg, ErrorDiv } from "./LoginPage.style.js";
 
 class LoginPage extends Component {
   render() {
@@ -33,8 +33,10 @@ class LoginPage extends Component {
             </label>
             <Button imgProp={Login} textProp="login" />
           </form>
-          <ErrorMsg>{this.props.loginError}</ErrorMsg>
-          <Link to="/passwordRecovery">Forgot password?</Link>
+          <ErrorDiv>
+            <ErrorMsg>{this.props.loginError}</ErrorMsg>
+            <Link to="/passwordRecovery">Forgot password?</Link>
+          </ErrorDiv>
         </LoginDiv>
 
         <Footer />

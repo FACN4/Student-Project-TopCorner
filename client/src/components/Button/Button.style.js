@@ -6,9 +6,9 @@ export const ButtonGen = styled.button`
   border-color: black;
   border-width: 1px;
   border-radius: 5px;
-  height: 37px;
+  height: 45px;
   font-family: "Reem Kufi", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
 `;
 export const BtnImg = styled.img`
   height: 60%;
