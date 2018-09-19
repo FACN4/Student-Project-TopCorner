@@ -16,27 +16,37 @@ export const HeaderImg = styled.img`
   top: 5%;
 `;
 export const Links = styled(Link)`
-  font-style: normal;
-  &:hover ${Links} {
-    display: inline-block;
-    background-color: white;
-  }
   &:visited ${Links} {
     color: black;
   }
-  &:active ${Links} {
-    color: lime;
-  }
+  text-decoration: none;
+  font-style: normal;
 `;
 export const Div = styled.div`
-  margin: 35px 10px;
-  font-size: 40px;
+  font-size: 25px;
   float: right;
-  width: 25%;
+  width: 300px;
   display: flex;
   justify-content: space-between;
 `;
 export const TopCorner = styled.h1`
   position: absolute;
   right: 100px;
+`;
+export const Div1 = styled.div`
+  display: flex;
+  height: 100px;
+  width: 100px;
+  background-color: #2ed573;
+  &:hover ${Div1} {
+    background-color: white;
+  }
+  &:active ${Div1} {
+    background-color: #2ed573;
+  }
+`;
+export const NavP = styled.p`
+  position: relative;
+  top: 15px;
+  left: 10px;
 `;
