@@ -7,7 +7,6 @@ import {
   Div
 } from "../Header2/Header2.style.js";
 import football from "../../assets/images/football.png";
-import photo from "../../assets/profilePhotos/HELLOMATE.jpg";
 
 class Header2 extends Component {
   render() {

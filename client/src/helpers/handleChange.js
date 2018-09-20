@@ -31,6 +31,7 @@ function handleChange(event) {
     errorMessage = "";
     disabled = false;
   }
+
   this.setState({
     signupError: errorMessage,
     disabledProp: disabled

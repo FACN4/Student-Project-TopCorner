@@ -1,6 +1,18 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const Links = styled(Link)`
+  &:hover ${Links} {
+    display: inline-block;
+    background-color: white;
+  }
+  &:visited ${Links} {
+    color: black;
+  }
+  &:active ${Links} {
+    color: lime;
+  }
+`;
 export const TopCorner = styled.h1`
   color: white;
 `;
@@ -25,17 +37,4 @@ export const Div = styled.div`
   display: flex;
   justify-content: space-between;
   ${"" /* flex-direction: row; */} font-size : 29px;
-`;
-
-export const Links = styled(Link)`
-  &:hover ${Links} {
-    display: inline-block;
-    background-color: white;
-  }
-  &:visited ${Links} {
-    color: black;
-  }
-  &:active ${Links} {
-    color: lime;
-  }
 `;

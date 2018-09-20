@@ -1,6 +1,22 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const Links = styled(Link)`
+  &:hover ${Links} {
+    display: inline-block;
+    background-color: white;
+    background-size: cover;
+  }
+  &:visited ${Links} {
+    color: black;
+  }
+  &:active ${Links} {
+    color: lime;
+  }
+  display: flex;
+  flex-direction: column;
+  font-size: 22px;
+`;
 export const HeaderDiv = styled.div`
   position: fixed;
   top: 0px;
@@ -34,22 +50,6 @@ export const TopCorner = styled.h1`
   position: fixed;
   left: 90px;
   top: -25px;
-`;
-export const Links = styled(Link)`
-  &:hover ${Links} {
-    display: inline-block;
-    background-color: white;
-    background-size: cover;
-  }
-  &:visited ${Links} {
-    color: black;
-  }
-  &:active ${Links} {
-    color: lime;
-  }
-  display: flex;
-  flex-direction: column;
-  font-size: 22px;
 `;
 
 export const Button = styled.button`
