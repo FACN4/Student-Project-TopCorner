@@ -6,7 +6,6 @@ import dropDown from "../../assets/images/dropDown.svg";
 
 class WhiteBar extends Component {
   render() {
-    console.log(this.props);
     return (
       <WhiteDiv>
         <Button imgProp={edit} textProp="Edit Predictions" />

@@ -15,13 +15,25 @@ const getMatches = () => {
   return db.query(query);
 };
 
+const getComments = () => {
+  const query = 'SELECT users.username, comments.comment, comments.created FROM users inner join comments on users.id=comments.user_Id ORDER by comments.id ASC';
+  return db.query(query);
+};
+
 const getPassword = (usernameInput) => {
   const query = 'SELECT password FROM users WHERE username = $1';
   return db.query(query, [usernameInput]);
+};
+
+const getUserId = (username) => {
+  const query = 'SELECT id FROM users WHERE username = $1';
+  return db.query(query, [username]);
 };
 module.exports = {
   getTeams,
   getUsers,
   getMatches,
   getPassword,
+  getComments,
+  getUserId,
 };
