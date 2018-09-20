@@ -26,11 +26,11 @@ function handleRegister(event) {
         window.location.reload();
       }
     })
-    .catch(() =>
+    .catch(err => {
       this.setState({
         signupError: "Username and/or email already exist"
-      })
-    );
+      });
+    });
 }
 
 export default handleRegister;

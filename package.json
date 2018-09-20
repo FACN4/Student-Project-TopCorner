@@ -10,7 +10,7 @@
     "server": "nodemon server/server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "node server/database/build.js run"
+    "buildDB": "node server/database/build.js run"
   },
   "repository": {
     "type": "git",

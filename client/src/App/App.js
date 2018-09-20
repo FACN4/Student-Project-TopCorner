@@ -18,6 +18,7 @@ import handleChange from "../helpers/handleChange";
 import handleLogin from "../helpers/handleLogin";
 import handleRegister from "../helpers/handleRegister";
 import handleLogout from "../helpers/handleLogout";
+import handlePostComment from "../helpers/handlePostComment";
 class App extends Component {
   constructor() {
     super();
@@ -25,6 +26,7 @@ class App extends Component {
       users: [],
       teams: [],
       matches: [],
+      comments: [],
       username: "",
       password: "",
       newUsername: "",
@@ -37,8 +39,11 @@ class App extends Component {
       loginError: "",
       auth: false,
       authUser: null,
-      dropDown: false
+      dropDown: false,
+      currentUserId: 1,
+      currentComment: ""
     };
+    this.handlePostComment = handlePostComment.bind(this);
     this.handleChange = handleChange.bind(this);
     this.handleLogin = handleLogin.bind(this);
     this.handleRegister = handleRegister.bind(this);
@@ -46,6 +51,8 @@ class App extends Component {
     this.validateCookieTF = validateCookieTF.bind(this);
     this.dropDownView = this.dropDownView.bind(this);
   }
+
+  handlePostComment;
 
   handleChange;
 
@@ -68,11 +75,17 @@ class App extends Component {
     Promise.all([
       fetch("/api/users"),
       fetch("/api/matches"),
-      fetch("/api/teams")
+      fetch("/api/teams"),
+      fetch("/api/comments")
     ])
       .then(res => Promise.all(res.map(dataset => dataset.json())))
       .then(data => {
-        this.setState({ users: data[0], matches: data[1], teams: data[2] });
+        this.setState({
+          users: data[0],
+          matches: data[1],
+          teams: data[2],
+          comments: data[3]
+        });
       })
       .catch(err => console.log(err));
   }
@@ -150,12 +163,16 @@ class App extends Component {
               render={() =>
                 this.state.auth ? (
                   <PredictionsPage
+                    handleChange={this.handleChange}
                     users={this.state.users}
                     matches={this.state.matches}
                     handleLogout={this.handleLogout}
                     authUser={this.state.authUser}
                     dropDown={this.state.dropDown}
                     dropDownView={this.dropDownView}
+                    handlePostComment={this.handlePostComment}
+                    comments={this.state.comments}
+                    currentComment={this.state.currentComment}
                   />
                 ) : (
                   <Redirect to="/login" />

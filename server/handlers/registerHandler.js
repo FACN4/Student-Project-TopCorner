@@ -15,9 +15,6 @@ module.exports = (req, res) => {
   const points = 0;
   const paid = false;
 
-  // getMatches()
-  //   .then(query => console.log(query.rows.length))
-  //   .catch(err => console.log(err));
   const { username, email, password } = req.body;
   bcrypt
     .hash(password, 10)
