@@ -1,5 +1,5 @@
 # Student-Project-TopCorner 
-### An online World Cup :trophy: :trophy: sweepstake :soccer: :soccer: 
+### An online World Cup :trophy: sweepstake :soccer:  
 
 ## Design - Figma :
 
@@ -18,7 +18,7 @@ https://www.figma.com/file/PKkqIU5ckKxRyCfYhRrAGIeY/Untitled?node-id=0%3A1
 * Set your profile page 
 * You have an option to join a group which you can invite your friends into & have a friendly chatting there too.
 * make your predictions for each game .
-* For each prediction you need to pay a small amount of money :heavy_dollar_sign: so you could win the pot in case your guessing was right :gem:
+* For each prediction you need to pay a small amount of money :moneybag: so you could win the pot in case your guessing was right :gem:
    * you can always come back & edit your predictions as long as the match date has not arrived yet.
 * Logout
 
