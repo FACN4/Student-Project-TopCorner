@@ -1,5 +1,5 @@
 # Student-Project-TopCorner 
-### An online World Cup :trophy: sweepstake :soccer:  
+### An Online World Cup :trophy: Sweepstake :soccer:  
 
 ## Design - Figma :
 
