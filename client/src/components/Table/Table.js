@@ -1,16 +1,11 @@
 import React, { Component } from "react";
-import Button from "../Button/Button.js";
 import {
   StyledPredictionsDiv,
   PredictionsTable,
   CellHeader,
   CellPoints
 } from "./Table.style";
-import edit from "../../assets/images/edit.png";
-import dropDown from "../../assets/images/dropDown.svg";
-// import Heyboy from "../../assets/profilePhotos/Heyboy.jpeg";
-// import mrrfvfd from "../../assets/profilePhotos/mrrfvfd.jpeg";
-// import solGirl from "../../assets/profilePhotos/Solgirl.jpg";
+
 import bennyboy from "../../assets/profilePhotos/bennyboy.jpeg";
 
 class Table extends Component {
@@ -66,8 +61,6 @@ class Table extends Component {
     } else {
       return (
         <StyledPredictionsDiv>
-          <Button imgProp={edit} textProp="Edit Predictions" />
-          <Button imgProp={dropDown} textProp="Sort" />
           <PredictionsTable>
             <tbody>{this.createTable()}</tbody>
           </PredictionsTable>

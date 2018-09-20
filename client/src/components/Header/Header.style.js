@@ -1,12 +1,24 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+export const Div1 = styled.div`
+  display: flex;
+  height: 100px;
+  width: 100px;
+  background-color: #2ed573;
+  &:hover ${Div1} {
+    background-color: white;
+  }
+  &:active ${Div1} {
+    background-color: #2ed573;
+  }
+`;
 export const HeaderDiv = styled.div`
   position: fixed;
   top: 0px;
   width: 100%;
-  height: 90px;
+  height: 100px;
   background-color: #2ed573;
+  z-index: 1;
 `;
 export const HeaderImg = styled.img`
   height: 90%;
@@ -15,27 +27,26 @@ export const HeaderImg = styled.img`
   top: 5%;
 `;
 export const Links = styled(Link)`
-  font-style :normal;
-&:hover ${Links} {
-display:inline-block;
-background-color: white;
-
-}
-&:visited ${Links}{
-  color : black;
-}
-&:active ${Links}{
-  color : lime;
-}
-`
+  &:visited ${Links} {
+    color: black;
+  }
+  text-decoration: none;
+  font-style: normal;
+`;
 export const Div = styled.div`
-margin : 35px 10px;
-font-size:40px;
-float : right ;
-width: 25%;
-display : flex;
- justify-content: space-between;
-`
-export const topCorner = styled.h1`
-font-size : 2em;
-`
+  font-size: 25px;
+  float: right;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+`;
+export const TopCorner = styled.h1`
+  position: absolute;
+  right: 100px;
+`;
+
+export const NavP = styled.p`
+  position: relative;
+  top: 15px;
+  left: 10px;
+`;

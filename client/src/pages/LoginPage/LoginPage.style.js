@@ -10,4 +10,12 @@ export const LoginDiv = styled.div`
 export const ErrorMsg = styled.span`
   color: red;
   font: bold;
+  font-size: 20px;
+  height: 30px;
+`;
+
+export const ErrorDiv = styled.div`
+  display: grid;
+  grid-auto-columns: 1fr;
+  width: 200px;
 `;

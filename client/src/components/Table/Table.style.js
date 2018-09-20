@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledPredictionsDiv = styled.div`
-  position: fixed;
-  top: 125px;
+  position: absolute;
+  top: 140px;
 `;
 export const PredictionsTable = styled.table`
   background-color: #ede9e9;
