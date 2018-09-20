@@ -6,6 +6,7 @@ export const StyledPredictionsDiv = styled.div`
 `;
 export const PredictionsTable = styled.table`
   background-color: #ede9e9;
+  overflow: scroll;
 `;
 
 export const CellHeader = styled.td`
