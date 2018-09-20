@@ -6,11 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test nyc tape testing/* | tap-spec",
     "client-install": "cd client && npm install",
-    "start": "node server/server.js",
-    "server": "nodemon server/server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "buildDB": "node server/database/build.js run"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",

@@ -7,6 +7,7 @@ const loginHandler = require('./handlers/loginHandler');
 const cookieValidationHandler = require('./handlers/cookieValidationHandler');
 const commentHandler = require('./handlers/commentHandler');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(
 app.use(cookieParser());
 
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '..', 'client/build')));
 
 app.get('/api/users', (req, res) => {
   getUsers()
@@ -48,6 +50,11 @@ app.get('/api/comments', (req, res) => {
       new Error(err);
     });
 });
+app.get('/', (req, res) => {
+  console.log(path.join(__dirname, '..', 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'client/build', 'index.html'));
+});
+
 app.post('/api/login', loginHandler);
 app.post('/api/register', registerHandler);
 app.post('/api/cookieValidation', cookieValidationHandler);
