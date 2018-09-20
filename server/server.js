@@ -59,5 +59,5 @@ app.post('/api/login', loginHandler);
 app.post('/api/register', registerHandler);
 app.post('/api/cookieValidation', cookieValidationHandler);
 app.post('/api/postComment', commentHandler);
-const port = 4040 || process.env.PORT;
+const port = process.env.PORT || 4040;
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
