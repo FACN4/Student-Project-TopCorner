@@ -1,8 +1,12 @@
-# Student-Project-TopCorner 
-### An Online World Cup Sweepstake :trophy: :soccer:  
+# TopCorner 
+TopCorner is an online football predictions game, inspired by World Cup sweepstakes popular in the U.K. :trophy: :soccer:  
 
-## Design - Figma :
+See the website here: https://topcorner.herokuapp.com/login
 
+## Design
+A protype was built using figma.
+
+- Figma :
 https://www.figma.com/file/PKkqIU5ckKxRyCfYhRrAGIeY/Untitled?node-id=0%3A1
 
 ![](https://i.imgur.com/KX5GhKz.png)worldwide
