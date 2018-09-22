@@ -1,17 +1,16 @@
 # TopCorner 
+## __In short:__
 TopCorner is an online football predictions game, inspired by World Cup sweepstakes popular in the U.K. :trophy: :soccer:  
 
 See the website here: https://topcorner.herokuapp.com/login
 
-## Design
-A protype was built using figma.
+### Design
+A protype was built using Figma.
 
 - Figma :
 https://www.figma.com/file/PKkqIU5ckKxRyCfYhRrAGIeY/Untitled?node-id=0%3A1
 
 ![](https://i.imgur.com/KX5GhKz.png)worldwide
-
-
 
 # User-Story : 
 
